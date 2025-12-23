@@ -40,8 +40,13 @@ jobs:
 
       - name: Deploy to gh-pages
         run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
+          # Configure git
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          
+          # Setup git credentials
+          git config --global credential.helper store
+          echo "https://x-access-token:${{ github.token }}@github.com" > ~/.git-credentials
           
           # Fetch gh-pages branch
           git fetch origin gh-pages:gh-pages 2>/dev/null || true
@@ -51,7 +56,7 @@ jobs:
           
           # If gh-pages branch exists, check it out to temp directory to preserve PR previews
           if git rev-parse --verify gh-pages >/dev/null 2>&1; then
-            git clone --branch gh-pages --single-branch https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git "$TEMP_DIR"
+            git clone --branch gh-pages --single-branch https://github.com/${{ github.repository }}.git "$TEMP_DIR"
             # Remove old production files but keep pr-* directories
             cd "$TEMP_DIR"
             find . -maxdepth 1 ! -name 'pr-*' ! -name '.' ! -name '.git' -exec rm -rf {} +
@@ -59,20 +64,13 @@ jobs:
             cd "$TEMP_DIR"
             git init
             git checkout --orphan gh-pages
-            git config user.name "github-actions[bot]"
-            git config user.email "github-actions[bot]@users.noreply.github.com"
           fi
           
           # Copy built files to root (excluding pr-* directories)
           cp -r ${{ github.workspace }}/public/* "$TEMP_DIR/"
           
+          # Navigate to temp directory and push
           cd "$TEMP_DIR"
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          
-          # Add and commit
           git add .
           git commit -m "Deploy production site from main branch" || echo "No changes to commit"
-          
-          # Push to gh-pages
-          git push --force https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git gh-pages
+          git push --force https://github.com/${{ github.repository }}.git gh-pages
