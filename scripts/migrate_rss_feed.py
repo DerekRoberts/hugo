@@ -127,9 +127,12 @@ def create_hugo_post(entry, output_dir):
         filepath = output_dir / f"{filename}-{counter}.md"
         counter += 1
     
+    # Escape title for YAML (replace quotes and handle special characters)
+    escaped_title = title.replace('"', '\\"').replace('\n', ' ')
+    
     # Create front matter
     front_matter = f"""---
-title: "{title}"
+title: "{escaped_title}"
 date: {date_str}
 draft: false
 """

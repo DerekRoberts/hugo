@@ -5,6 +5,7 @@ Creates sample blog posts to verify the migration script works correctly.
 """
 
 import sys
+import tempfile
 from pathlib import Path
 from datetime import datetime
 
@@ -72,56 +73,57 @@ def test_create_hugo_post():
     """Test Hugo post creation."""
     print("\nTesting create_hugo_post...")
     
-    # Create a temporary output directory
-    output_dir = Path("/tmp/test_hugo_migration")
-    output_dir.mkdir(exist_ok=True)
-    
-    # Create mock entries
-    entries = [
-        MockEntry(
-            title="Test Leadership Post",
-            content="<p>This is a <strong>test post</strong> about leadership coaching.</p>",
-            date=datetime(2024, 1, 15),
-            link="https://www.metacurious.ca/test-post",
-            tags=["leadership", "coaching"]
-        ),
-        MockEntry(
-            title="Social Justice in Action",
-            content="<h2>Introduction</h2><p>Discussing social justice initiatives.</p>",
-            date=datetime(2024, 2, 20),
-            link="https://www.metacurious.ca/social-justice",
-            tags=["social justice", "community"]
-        ),
-    ]
-    
-    created_files = []
-    for entry in entries:
-        try:
-            filepath = create_hugo_post(entry, output_dir)
-            created_files.append(filepath)
-            print(f"  ✓ Created: {filepath.name}")
-            
-            # Verify file content
-            with open(filepath, 'r') as f:
-                content = f.read()
-                if "---" in content and "title:" in content and "date:" in content:
-                    print(f"    ✓ Valid front matter")
-                else:
-                    print(f"    ✗ Invalid front matter")
-        except Exception as e:
-            print(f"  ✗ Error: {e}")
-    
-    print(f"\n  Created {len(created_files)} test files in {output_dir}")
-    
-    # Show sample file content
-    if created_files:
-        print("\n  Sample file content:")
-        print("  " + "="*58)
-        with open(created_files[0], 'r') as f:
-            lines = f.readlines()[:15]  # Show first 15 lines
-            for line in lines:
-                print(f"  {line.rstrip()}")
-        print("  " + "="*58)
+    # Create a temporary output directory (portable across OS)
+    with tempfile.TemporaryDirectory() as tmpdir:
+        output_dir = Path(tmpdir) / "test_hugo_migration"
+        output_dir.mkdir(exist_ok=True)
+        
+        # Create mock entries
+        entries = [
+            MockEntry(
+                title="Test Leadership Post",
+                content="<p>This is a <strong>test post</strong> about leadership coaching.</p>",
+                date=datetime(2024, 1, 15),
+                link="https://www.metacurious.ca/test-post",
+                tags=["leadership", "coaching"]
+            ),
+            MockEntry(
+                title="Social Justice in Action",
+                content="<h2>Introduction</h2><p>Discussing social justice initiatives.</p>",
+                date=datetime(2024, 2, 20),
+                link="https://www.metacurious.ca/social-justice",
+                tags=["social justice", "community"]
+            ),
+        ]
+        
+        created_files = []
+        for entry in entries:
+            try:
+                filepath = create_hugo_post(entry, output_dir)
+                created_files.append(filepath)
+                print(f"  ✓ Created: {filepath.name}")
+                
+                # Verify file content
+                with open(filepath, 'r') as f:
+                    content = f.read()
+                    if "---" in content and "title:" in content and "date:" in content:
+                        print(f"    ✓ Valid front matter")
+                    else:
+                        print(f"    ✗ Invalid front matter")
+            except Exception as e:
+                print(f"  ✗ Error: {e}")
+        
+        print(f"\n  Created {len(created_files)} test files in {output_dir}")
+        
+        # Show sample file content
+        if created_files:
+            print("\n  Sample file content:")
+            print("  " + "="*58)
+            with open(created_files[0], 'r') as f:
+                lines = f.readlines()[:15]  # Show first 15 lines
+                for line in lines:
+                    print(f"  {line.rstrip()}")
+            print("  " + "="*58)
 
 
 def main():
