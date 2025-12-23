@@ -2,14 +2,42 @@
 
 This guide explains how to migrate blog content from the MetaCurious RSS feed to this Hugo site.
 
-## Prerequisites
+## Quick Start: Using GitHub Actions (Recommended)
+
+The easiest way to migrate content is using the automated GitHub Actions workflow:
+
+1. Go to the **Actions** tab in this repository
+2. Select **"Migrate Blog Content from RSS Feed"** workflow
+3. Click **"Run workflow"**
+4. Choose options:
+   - Feed URL (default: `https://www.metacurious.ca/feed`)
+   - Whether to create a Pull Request (recommended: `true`)
+5. Click **"Run workflow"** button
+
+The workflow will:
+- Fetch and parse the RSS feed
+- Convert posts to Hugo markdown format
+- Create a pull request with the migrated content (if selected)
+- Provide a summary of changes
+
+**Benefits of this approach:**
+- No local setup required
+- Works even if the feed requires network access
+- Creates a reviewable PR before merging
+- Automated and reproducible
+
+## Manual Migration: Local Script
+
+If you prefer to run the migration locally:
+
+### Prerequisites
 
 - Python 3.7 or higher
 - pip (Python package manager)
 
-## Migration Steps
+### Migration Steps
 
-### 1. Install Dependencies
+#### 1. Install Dependencies
 
 First, install the required Python packages:
 
@@ -23,7 +51,9 @@ Or install them individually:
 pip install feedparser python-dateutil
 ```
 
-### 2. Run the Migration Script
+#### 2. Run the Migration Script
+
+#### 2. Run the Migration Script
 
 Execute the migration script from the root of the repository:
 
@@ -38,7 +68,7 @@ The script will:
 - Save them to `content/blog/` directory
 - Preserve metadata (title, date, tags, categories, original URL)
 
-### 3. Review the Migrated Content
+#### 3. Review the Migrated Content
 
 After the migration completes, review the newly created blog posts:
 
@@ -53,7 +83,7 @@ Each post will:
 - Link back to the original URL
 - Have content converted from HTML to Markdown
 
-### 4. Preview the Site Locally
+#### 4. Preview the Site Locally
 
 Test the migrated content locally:
 
@@ -63,7 +93,7 @@ hugo server -D
 
 Then open your browser to http://localhost:1313/hugo/ to review the blog posts.
 
-### 5. Adjust Content as Needed
+#### 5. Adjust Content as Needed
 
 You may want to manually review and adjust:
 - Image paths (if images were referenced in the original posts)
@@ -71,7 +101,7 @@ You may want to manually review and adjust:
 - Post slugs/filenames
 - Draft status (all posts are set to `draft: false` by default)
 
-### 6. Commit and Deploy
+#### 6. Commit and Deploy
 
 Once you're satisfied with the migrated content:
 
