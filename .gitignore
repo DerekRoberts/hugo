@@ -21,8 +21,3 @@ node_modules/
 # Temporary files
 *.log
 *.tmp
-
-# Python cache
-__pycache__/
-*.pyc
-*.pyo
