@@ -7,20 +7,14 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
-  pages: write
-  id-token: write
-
-concurrency:
-  group: "pages"
-  cancel-in-progress: false
+  contents: write
 
 defaults:
   run:
     shell: bash
 
 jobs:
-  build:
+  build-and-deploy:
     runs-on: ubuntu-latest
     env:
       HUGO_VERSION: 0.146.0
@@ -37,29 +31,45 @@ jobs:
           tar -xzf ${{ runner.temp }}/hugo.tar.gz -C ${{ runner.temp }}
           sudo mv ${{ runner.temp }}/hugo /usr/local/bin/
 
-      - name: Setup Pages
-        id: pages
-        uses: actions/configure-pages@v4
-
       - name: Build with Hugo
         env:
           HUGO_ENVIRONMENT: production
           HUGO_ENV: production
         run: |
-          hugo --minify --baseURL "${{ steps.pages.outputs.base_url }}/"
+          hugo --minify --baseURL "https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/"
 
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: ./public
-
-  deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
-    needs: build
-    steps:
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+      - name: Deploy to gh-pages
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          
+          # Fetch gh-pages branch
+          git fetch origin gh-pages:gh-pages 2>/dev/null || true
+          
+          # Create a temporary directory for gh-pages content
+          TEMP_DIR=$(mktemp -d)
+          
+          # If gh-pages branch exists, check it out to temp directory to preserve PR previews
+          if git rev-parse --verify gh-pages >/dev/null 2>&1; then
+            git clone --branch gh-pages --single-branch . "$TEMP_DIR"
+            # Remove old production files but keep pr-* directories
+            cd "$TEMP_DIR"
+            find . -maxdepth 1 ! -name 'pr-*' ! -name '.' ! -name '.git' -exec rm -rf {} +
+          else
+            cd "$TEMP_DIR"
+            git init
+            git checkout -b gh-pages
+          fi
+          
+          # Copy built files to root (excluding pr-* directories)
+          cp -r ${{ github.workspace }}/public/* .
+          
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          
+          # Add and commit
+          git add .
+          git commit -m "Deploy production site from main branch" || echo "No changes to commit"
+          
+          # Push to gh-pages
+          git push --force https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git gh-pages
