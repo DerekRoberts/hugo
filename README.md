@@ -64,6 +64,20 @@ hugo new content/blog/my-post.md
 hugo new content/my-page.md
 ```
 
+### Migrating Content from RSS Feed
+
+To migrate blog posts from the MetaCurious RSS feed:
+
+```bash
+# Install dependencies
+pip install -r scripts/requirements.txt
+
+# Run migration script
+python scripts/migrate_rss_feed.py
+```
+
+See [MIGRATION.md](MIGRATION.md) for detailed migration instructions.
+
 ## License
 
 Apache License 2.0 - See LICENSE file for details
