@@ -4,18 +4,18 @@ title = 'Metacurious'
 theme = 'PaperMod'
 
 [params]
-  description = "Metacurious - Exploring ideas and creativity"
-  author = "Metacurious"
+  description = "MetaCurious - Coaching for Leadership, Social Justice, and Relationships"
+  author = "MetaCurious"
   showShareButtons = true
   showReadingTime = true
   showPostNavLinks = true
   showBreadCrumbs = true
-  showCodeCopyButtons = true
+  showCodeCopyButtons = false
   showToc = true
 
 [params.homeInfoParams]
-  Title = "Welcome to Metacurious"
-  Content = "Exploring ideas, creativity, and knowledge"
+  Title = "MetaCurious Coaching"
+  Content = "Empowering emerging leaders to foster equitable communities through transformative coaching in leadership, social justice, and relationships."
 
 [[menu.main]]
   name = "Home"
@@ -28,9 +28,19 @@ theme = 'PaperMod'
   weight = 20
 
 [[menu.main]]
-  name = "Blog"
-  url = "/blog/"
+  name = "The Coach"
+  url = "/about-the-coach/"
   weight = 30
+
+[[menu.main]]
+  name = "Services"
+  url = "/services/"
+  weight = 40
+
+[[menu.main]]
+  name = "Contact"
+  url = "/contact/"
+  weight = 50
 
 [outputs]
   home = ["HTML", "RSS", "JSON"]
