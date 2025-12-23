@@ -51,23 +51,23 @@ jobs:
           
           # If gh-pages branch exists, check it out to temp directory
           if git rev-parse --verify gh-pages >/dev/null 2>&1; then
-            git clone --branch gh-pages --single-branch . "$TEMP_DIR"
+            git clone --branch gh-pages --single-branch https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git "$TEMP_DIR"
+          else
+            cd "$TEMP_DIR"
+            git init
+            git checkout --orphan gh-pages
+            git config user.name "github-actions[bot]"
+            git config user.email "github-actions[bot]@users.noreply.github.com"
           fi
           
           # Create pr-specific directory in temp location
           mkdir -p "$TEMP_DIR/pr-${{ github.event.pull_request.number }}"
           
           # Copy built files to pr directory
-          cp -r public/* "$TEMP_DIR/pr-${{ github.event.pull_request.number }}/"
+          cp -r ${{ github.workspace }}/public/* "$TEMP_DIR/pr-${{ github.event.pull_request.number }}/"
           
           # Navigate to temp directory
           cd "$TEMP_DIR"
-          
-          # Initialize git if needed
-          if [ ! -d .git ]; then
-            git init
-            git checkout -b gh-pages
-          fi
           
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
