@@ -1,0 +1,36 @@
+baseURL = 'https://derekroberts.github.io/hugo/'
+languageCode = 'en-us'
+title = 'Metacurious'
+theme = 'PaperMod'
+
+[params]
+  description = "Metacurious - Exploring ideas and creativity"
+  author = "Metacurious"
+  showShareButtons = true
+  showReadingTime = true
+  showPostNavLinks = true
+  showBreadCrumbs = true
+  showCodeCopyButtons = true
+  showToc = true
+
+[params.homeInfoParams]
+  Title = "Welcome to Metacurious"
+  Content = "Exploring ideas, creativity, and knowledge"
+
+[[menu.main]]
+  name = "Home"
+  url = "/"
+  weight = 10
+
+[[menu.main]]
+  name = "About"
+  url = "/about/"
+  weight = 20
+
+[[menu.main]]
+  name = "Blog"
+  url = "/blog/"
+  weight = 30
+
+[outputs]
+  home = ["HTML", "RSS", "JSON"]
