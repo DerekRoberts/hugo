@@ -14,7 +14,6 @@ import os
 import re
 from datetime import datetime
 from pathlib import Path
-from urllib.parse import urlparse
 import html
 
 
@@ -202,9 +201,9 @@ def migrate_feed(feed_url, output_dir):
 
 def main():
     """Main function."""
-    # Configuration
-    FEED_URL = "https://www.metacurious.ca/feed"
-    OUTPUT_DIR = "content/blog"
+    # Configuration - can be overridden by environment variables
+    FEED_URL = os.environ.get('FEED_URL', 'https://www.metacurious.ca/feed')
+    OUTPUT_DIR = os.environ.get('OUTPUT_DIR', 'content/blog')
     
     # Get the script's directory and construct absolute path
     script_dir = Path(__file__).parent.parent
@@ -227,6 +226,6 @@ def main():
     
     return 0
 
-
 if __name__ == "__main__":
-    exit(main())
+    import sys
+    sys.exit(main())

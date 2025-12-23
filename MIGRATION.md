@@ -53,8 +53,6 @@ pip install feedparser python-dateutil
 
 #### 2. Run the Migration Script
 
-#### 2. Run the Migration Script
-
 Execute the migration script from the root of the repository:
 
 ```bash
