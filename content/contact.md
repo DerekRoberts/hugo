@@ -57,14 +57,6 @@ Coaching sessions are conducted:
 
 ---
 
-## Connect on Social Media
-
-Stay connected and learn more about leadership, social justice, and coaching:
-
-- LinkedIn: [MetaCurious Coaching](#)
-- Twitter: [@metacurious](#)
-- Instagram: [@metacurious_coaching](#)
-
 ---
 
 ## Questions?

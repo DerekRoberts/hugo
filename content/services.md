@@ -35,7 +35,7 @@ Leadership coaching at MetaCurious supports you in:
 Social justice coaching guides you to:
 
 - Address and dismantle systems of inequality
-- Develop and implement DEI (Diversity, Equity, Inclusion, Justice, and Belonging) strategies
+- Develop and implement DEIJB (Diversity, Equity, Inclusion, Justice, and Belonging) strategies
 - Navigate power, privilege, and identity in your work
 - Build inclusive, equitable organizational cultures
 - Make ethical decisions in complex situations
