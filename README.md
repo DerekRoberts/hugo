@@ -2,6 +2,16 @@
 
 This repository contains the Hugo-based website for Metacurious, migrated from Wix.
 
+## ⚠️ Important: GitHub Pages Setup Required
+
+**To make the site accessible at https://derekroberts.github.io/hugo/, GitHub Pages must be enabled:**
+
+1. Go to repository **Settings** → **Pages**
+2. Set **Source** to **"GitHub Actions"**
+3. The workflow will automatically build and deploy
+
+📖 See [DEPLOYMENT.md](DEPLOYMENT.md) for detailed setup instructions.
+
 ## Overview
 
 Metacurious is now built with [Hugo](https://gohugo.io/), a fast and modern static site generator, and is hosted on [GitHub Pages](https://pages.github.com/).

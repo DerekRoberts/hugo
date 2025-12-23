@@ -2,6 +2,12 @@
 
 This document describes the steps needed to enable GitHub Pages deployment for this Hugo site.
 
+## ⚠️ IMPORTANT: GitHub Pages Must Be Enabled
+
+**The site will NOT be accessible until GitHub Pages is enabled in the repository settings!**
+
+The GitHub Actions workflow will fail with an error at the "Setup Pages" step if GitHub Pages is not enabled. You must complete the setup steps below before the site can be deployed.
+
 ## Steps to Enable GitHub Pages
 
 1. **Go to Repository Settings**
