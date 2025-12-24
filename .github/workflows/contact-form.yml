@@ -16,12 +16,11 @@ jobs:
     steps:
       - name: Parse contact form data
         id: parse
+        env:
+          ISSUE_BODY: ${{ github.event.issue.body }}
         run: |
           # Extract email, name, and message from issue body
-          ISSUE_BODY=$(cat << 'EOF'
-          ${{ github.event.issue.body }}
-          EOF
-          )
+          # ISSUE_BODY is now safely passed via environment variable
           
           # Parse the structured data
           NAME=$(echo "$ISSUE_BODY" | grep "^\*\*Name:\*\*" | sed 's/\*\*Name:\*\* //')
