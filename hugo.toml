@@ -17,6 +17,16 @@ theme = 'PaperMod'
   Title = "MetaCurious Coaching"
   Content = "Empowering emerging leaders to foster equitable communities through transformative coaching in leadership, social justice, and relationships."
 
+[[params.socialIcons]]
+  name = "instagram"
+  title = "Instagram"
+  url = "https://www.instagram.com/metacuriouscoaching/"
+
+[[params.socialIcons]]
+  name = "facebook"
+  title = "Facebook"
+  url = "https://www.facebook.com/MetaCuriousCoaching"
+
 [[menu.main]]
   name = "Home"
   url = "/"
