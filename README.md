@@ -14,6 +14,19 @@ Metacurious is now built with [Hugo](https://gohugo.io/), a fast and modern stat
 - `themes/PaperMod/` - Hugo theme (via git submodule)
 - `hugo.toml` - Hugo configuration file
 - `.github/workflows/hugo.yml` - GitHub Actions workflow for deployment
+- `.github/workflows/contact-form.yml` - GitHub Actions workflow for contact form emails
+
+## Features
+
+### Contact Form
+
+The site includes a contact form at `/contact/` with the following features:
+- Name, Email, and Message input fields
+- Client-side form validation
+- Multiple submission options (mailto fallback, optional GitHub Issues integration)
+- Responsive design matching the site theme
+
+For detailed setup instructions, see [CONTACT_FORM_SETUP.md](CONTACT_FORM_SETUP.md).
 
 ## Local Development
 
