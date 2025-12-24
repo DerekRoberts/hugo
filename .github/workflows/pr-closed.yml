@@ -25,12 +25,18 @@ jobs:
         id: cleanup
         continue-on-error: true
         run: |
+          set -e
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           
           # Fetch and checkout gh-pages branch
-          git fetch origin gh-pages:gh-pages || exit 1
-          git checkout gh-pages || exit 1
+          # If gh-pages doesn't exist, that's ok - nothing to clean up
+          if ! git fetch origin gh-pages:gh-pages 2>/dev/null; then
+            echo "No gh-pages branch found, nothing to clean up"
+            exit 0
+          fi
+          
+          git checkout gh-pages
           
           # Remove the pr directory if it exists
           if [ -d "pr-${{ github.event.pull_request.number }}" ]; then
