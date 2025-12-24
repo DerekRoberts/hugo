@@ -5,7 +5,15 @@
 
 version: 2
 updates:
-  - package-ecosystem: "" # See documentation for possible values
+  - package-ecosystem: "gomod" # See documentation for possible values
     directory: "/" # Location of package manifests
+    schedule:
+      interval: "monthly"
+  - package-ecosystem: "github-actions" # Monitor GitHub Actions workflows
+    directory: "/" # Location of .github/workflows
+    schedule:
+      interval: "monthly"
+  - package-ecosystem: "gitsubmodule" # Monitor git submodules (e.g., PaperMod theme)
+    directory: "/" # Root directory containing submodules
     schedule:
       interval: "monthly"
