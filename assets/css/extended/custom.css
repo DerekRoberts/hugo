@@ -94,7 +94,7 @@
 .post-content a {
     color: var(--primary-color);
     text-decoration: underline;
-    text-decoration-color: rgba(44, 95, 124, 0.3);
+    text-decoration-color: rgba(92, 64, 51, 0.3);
     text-decoration-thickness: 2px;
     text-underline-offset: 3px;
     transition: all 0.2s ease;
@@ -152,7 +152,7 @@ footer a:hover {
 
 .post-entry:hover {
     border-color: var(--primary-color);
-    box-shadow: 0 4px 12px rgba(44, 95, 124, 0.1);
+    box-shadow: 0 4px 12px rgba(92, 64, 51, 0.1);
     transform: translateY(-2px);
 }
 
@@ -181,7 +181,7 @@ footer a:hover {
     border: 3px solid var(--primary-color);
     border-radius: 50%;
     padding: 5px;
-    box-shadow: 0 4px 8px rgba(44, 95, 124, 0.15);
+    box-shadow: 0 4px 8px rgba(92, 64, 51, 0.15);
 }
 
 /* Dark mode adjustments */
@@ -219,12 +219,12 @@ button:focus {
     border-left: 4px solid var(--accent-color);
     padding: 1rem 1.5rem;
     margin: 2rem 0;
-    background-color: rgba(129, 178, 154, 0.1);
+    background-color: rgba(166, 124, 82, 0.1);
 }
 
 .callout-important {
     border-left-color: var(--secondary-color);
-    background-color: rgba(224, 122, 95, 0.1);
+    background-color: rgba(139, 111, 71, 0.1);
 }
 
 /* Hero image for homepage */
