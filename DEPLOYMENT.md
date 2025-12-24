@@ -1,6 +1,6 @@
 # GitHub Pages Setup Instructions
 
-This document describes the steps needed to enable GitHub Pages deployment for this Hugo site.
+This document describes the steps needed to enable GitHub Pages deployment for this Hugo site, including PR preview deployments.
 
 ## Steps to Enable GitHub Pages
 
@@ -10,7 +10,8 @@ This document describes the steps needed to enable GitHub Pages deployment for t
 
 2. **Configure GitHub Pages**
    - In the left sidebar, click on "Pages"
-   - Under "Source", select "GitHub Actions"
+   - Under "Source", select "Deploy from a branch"
+   - Select the "gh-pages" branch and "/" (root) folder
    - Save the configuration
 
 3. **Trigger First Deployment**
@@ -28,12 +29,41 @@ This document describes the steps needed to enable GitHub Pages deployment for t
      - `https://<username>.github.io/<repository>/`
      - For this repository: `https://derekroberts.github.io/hugo/`
 
+## PR Preview Deployments
+
+This repository includes automatic PR preview deployments. When you open a pull request:
+
+1. **Automatic Build & Deploy**
+   - The workflow automatically builds the Hugo site with your PR changes
+   - Deploys the preview to a PR-specific path: `/pr-{number}/`
+   - Posts a comment on the PR with the preview URL
+
+2. **Preview URL Format**
+   - `https://<username>.github.io/<repository>/pr-<PR_NUMBER>/`
+   - Example: `https://derekroberts.github.io/hugo/pr-5/`
+
+3. **Automatic Updates**
+   - The preview is automatically updated whenever you push new commits to the PR
+   - The existing PR comment is updated (not duplicated)
+
+4. **Automatic Cleanup**
+   - When the PR is closed or merged, the preview deployment is automatically removed
+   - A cleanup comment is posted on the PR
+
+### How It Works
+
+- PR previews are deployed to the `gh-pages` branch in subdirectories
+- Each PR gets its own isolated preview environment
+- The main production site remains unaffected on the root path
+- Previews are built with PR-specific baseURL for correct asset loading
+
 ## Important Notes
 
-- The workflow requires GitHub Pages to be enabled with "GitHub Actions" as the source
+- The workflow requires GitHub Pages to be enabled with "gh-pages" branch as the source
 - The first deployment may take a few minutes
 - Subsequent deployments are triggered automatically on push to main branch
 - The workflow uses Hugo v0.146.0 (extended version)
+- PR previews require write permissions to the repository
 
 ## Custom Domain (Optional)
 
@@ -60,3 +90,4 @@ If deployment fails:
 - Ensure GitHub Pages is enabled in repository settings
 - Verify the workflow file syntax is correct
 - Make sure the repository has Pages enabled (may require public repository or GitHub Pro)
+- For PR previews, ensure the workflow has write permissions to contents and pull requests
