@@ -4,7 +4,7 @@ title = 'MetaCurious'
 theme = 'PaperMod'
 
 [params]
-  description = "MetaCurious - Coaching for Leadership, Social Justice, and Relationships"
+  description = "Coaching emerging leaders for more equitable communities"
   author = "MetaCurious"
   showShareButtons = true
   showReadingTime = true

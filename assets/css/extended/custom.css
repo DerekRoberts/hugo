@@ -1,15 +1,15 @@
 /* MetaCurious Custom Styling */
 
-/* Color scheme inspired by social justice and leadership themes */
+/* Color scheme matching original metacurious.ca site */
 :root {
-    /* Primary brand colors - warm, inviting, professional */
-    --primary-color: #2c5f7c; /* Deep teal-blue for trust and wisdom */
-    --secondary-color: #e07a5f; /* Warm coral for energy and compassion */
-    --accent-color: #81b29a; /* Sage green for growth and balance */
-    --text-dark: #2d3142; /* Rich dark blue-gray for readability */
-    --text-light: #4a5568; /* Medium gray for secondary text */
-    --background-light: #f8f9fa; /* Clean light background */
-    --border-color: #e2e8f0; /* Subtle borders */
+    /* Primary brand colors - warm earth tones */
+    --primary-color: #5c4033; /* Deep brown for trust and grounding */
+    --secondary-color: #8b6f47; /* Warm tan-brown */
+    --accent-color: #a67c52; /* Light brown/tan */
+    --text-dark: #3d2817; /* Rich dark brown for readability */
+    --text-light: #5c4033; /* Medium brown for secondary text */
+    --background-light: #f8f5f2; /* Warm light background */
+    --border-color: #e5ddd5; /* Subtle warm borders */
 }
 
 /* Custom header styling */
@@ -26,10 +26,10 @@
 .logo::before {
     content: "";
     display: inline-block;
-    width: 32px;
-    height: 32px;
-    /* Logo path matches baseURL configuration in hugo.toml */
-    background-image: url('/hugo/logo.svg');
+    width: 40px;
+    height: 40px;
+    /* Logo from original metacurious.ca site */
+    background-image: url('/hugo/logo.avif');
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
@@ -186,13 +186,13 @@ footer a:hover {
 
 /* Dark mode adjustments */
 .dark {
-    --primary-color: #5fa8d3;
-    --secondary-color: #f4a49d;
-    --accent-color: #a5d6a7;
-    --text-dark: #e2e8f0;
-    --text-light: #cbd5e0;
-    --background-light: #1a202c;
-    --border-color: #2d3748;
+    --primary-color: #a67c52;
+    --secondary-color: #b89968;
+    --accent-color: #c9a876;
+    --text-dark: #f0ebe5;
+    --text-light: #d4ccc3;
+    --background-light: #2a2318;
+    --border-color: #4a3f35;
 }
 
 /* Enhanced tag/taxonomy styling */
@@ -225,4 +225,29 @@ button:focus {
 .callout-important {
     border-left-color: var(--secondary-color);
     background-color: rgba(224, 122, 95, 0.1);
+}
+
+/* Hero image for homepage */
+.home-info {
+    position: relative;
+}
+
+.home-info::after {
+    content: "";
+    display: block;
+    width: 100%;
+    max-width: 500px;
+    height: 350px;
+    margin: 2rem auto 0;
+    background-image: url('/hugo/main.avif');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+@media screen and (max-width: 768px) {
+    .home-info::after {
+        max-width: 100%;
+        height: 250px;
+    }
 }
