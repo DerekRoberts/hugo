@@ -1,0 +1,227 @@
+/* MetaCurious Custom Styling */
+
+/* Color scheme inspired by social justice and leadership themes */
+:root {
+    /* Primary brand colors - warm, inviting, professional */
+    --primary-color: #2c5f7c; /* Deep teal-blue for trust and wisdom */
+    --secondary-color: #e07a5f; /* Warm coral for energy and compassion */
+    --accent-color: #81b29a; /* Sage green for growth and balance */
+    --text-dark: #2d3142; /* Rich dark blue-gray for readability */
+    --text-light: #4a5568; /* Medium gray for secondary text */
+    --background-light: #f8f9fa; /* Clean light background */
+    --border-color: #e2e8f0; /* Subtle borders */
+}
+
+/* Custom header styling */
+.logo {
+    font-weight: 700;
+    font-size: 1.5rem;
+    color: var(--primary-color) !important;
+    letter-spacing: -0.5px;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.logo::before {
+    content: "";
+    display: inline-block;
+    width: 32px;
+    height: 32px;
+    background-image: url('/hugo/logo.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.logo:hover {
+    color: var(--secondary-color) !important;
+}
+
+/* Enhanced navigation */
+#menu a {
+    font-weight: 500;
+    transition: color 0.2s ease;
+}
+
+#menu a:hover {
+    color: var(--primary-color) !important;
+}
+
+#menu a.active {
+    color: var(--primary-color) !important;
+    font-weight: 600;
+}
+
+/* Home info section enhancement */
+.home-info .entry-content {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: var(--text-light);
+}
+
+.home-info h1 {
+    color: var(--primary-color) !important;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+}
+
+.home-info h2 {
+    color: var(--text-dark) !important;
+    font-weight: 600;
+    margin-top: 2rem;
+}
+
+/* Button and link styling */
+.post-entry .entry-footer a,
+.paginav a {
+    transition: all 0.2s ease;
+}
+
+.post-entry .entry-footer a:hover,
+.paginav a:hover {
+    color: var(--primary-color) !important;
+}
+
+/* Post content enhancements */
+.post-content h1,
+.post-content h2,
+.post-content h3 {
+    color: var(--primary-color) !important;
+}
+
+.post-content a {
+    color: var(--primary-color);
+    text-decoration: underline;
+    text-decoration-color: rgba(44, 95, 124, 0.3);
+    text-decoration-thickness: 2px;
+    text-underline-offset: 3px;
+    transition: all 0.2s ease;
+}
+
+.post-content a:hover {
+    color: var(--secondary-color);
+    text-decoration-color: var(--secondary-color);
+}
+
+/* Lists styling for better readability */
+.post-content ul,
+.home-info ul {
+    margin-left: 0;
+    padding-left: 1.5rem;
+}
+
+.post-content li,
+.home-info li {
+    margin-bottom: 0.75rem;
+    line-height: 1.7;
+}
+
+.post-content li::marker {
+    color: var(--accent-color);
+}
+
+/* Enhanced section separators */
+.post-content hr,
+hr {
+    border-color: var(--border-color);
+    margin: 2.5rem 0;
+}
+
+/* Footer enhancement */
+footer {
+    border-top: 2px solid var(--border-color);
+    padding-top: 2rem;
+}
+
+footer a {
+    color: var(--primary-color);
+    transition: color 0.2s ease;
+}
+
+footer a:hover {
+    color: var(--secondary-color);
+}
+
+/* Card/post entry styling */
+.post-entry {
+    border: 1px solid var(--border-color);
+    transition: all 0.3s ease;
+}
+
+.post-entry:hover {
+    border-color: var(--primary-color);
+    box-shadow: 0 4px 12px rgba(44, 95, 124, 0.1);
+    transform: translateY(-2px);
+}
+
+.post-entry .entry-header h2 {
+    color: var(--primary-color) !important;
+    transition: color 0.2s ease;
+}
+
+.post-entry:hover .entry-header h2 {
+    color: var(--secondary-color) !important;
+}
+
+/* Responsive typography improvements */
+@media screen and (max-width: 768px) {
+    .home-info .entry-content {
+        font-size: 1rem;
+    }
+    
+    .logo {
+        font-size: 1.3rem;
+    }
+}
+
+/* Profile/Avatar placeholder styling (if logo is added) */
+.profile-image {
+    border: 3px solid var(--primary-color);
+    border-radius: 50%;
+    padding: 5px;
+    box-shadow: 0 4px 8px rgba(44, 95, 124, 0.15);
+}
+
+/* Dark mode adjustments */
+.dark {
+    --primary-color: #5fa8d3;
+    --secondary-color: #f4a49d;
+    --accent-color: #a5d6a7;
+    --text-dark: #e2e8f0;
+    --text-light: #cbd5e0;
+    --background-light: #1a202c;
+    --border-color: #2d3748;
+}
+
+/* Enhanced tag/taxonomy styling */
+.terms-tags a {
+    background-color: var(--accent-color);
+    color: white;
+    transition: all 0.2s ease;
+}
+
+.terms-tags a:hover {
+    background-color: var(--primary-color);
+    transform: translateY(-2px);
+}
+
+/* Accessibility improvements */
+a:focus,
+button:focus {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 2px;
+}
+
+/* Social justice themed callout boxes */
+.callout {
+    border-left: 4px solid var(--accent-color);
+    padding: 1rem 1.5rem;
+    margin: 2rem 0;
+    background-color: rgba(129, 178, 154, 0.1);
+}
+
+.callout-important {
+    border-left-color: var(--secondary-color);
+    background-color: rgba(224, 122, 95, 0.1);
+}
