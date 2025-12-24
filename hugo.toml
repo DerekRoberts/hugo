@@ -43,6 +43,16 @@ Empowering emerging leaders to foster equitable communities through transformati
 - Relationship Coaching
 """
 
+[[params.socialIcons]]
+  name = "instagram"
+  title = "Instagram"
+  url = "https://www.instagram.com/metacuriouscoaching/"
+
+[[params.socialIcons]]
+  name = "facebook"
+  title = "Facebook"
+  url = "https://www.facebook.com/MetaCuriousCoaching"
+
 [[menu.main]]
   name = "Home"
   url = "/"
