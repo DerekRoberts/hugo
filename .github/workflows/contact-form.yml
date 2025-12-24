@@ -2,7 +2,7 @@ name: Send Contact Form Email
 
 on:
   issues:
-    types: [opened, labeled]
+    types: [opened]
 
 jobs:
   send-email:

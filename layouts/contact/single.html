@@ -181,6 +181,26 @@ document.addEventListener('DOMContentLoaded', function() {
   const statusDiv = document.getElementById('form-status');
   const submitBtn = form.querySelector('.submit-btn');
 
+  // Helper function to open mailto with form data
+  function openMailto(name, email, message) {
+    const subject = `Contact Form - ${name}`;
+    const body = `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`;
+    const mailtoLink = `mailto:info@metacurious.ca?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    window.location.href = mailtoLink;
+  }
+
+  // Helper function to show status message
+  function showStatus(isSuccess, message) {
+    statusDiv.className = `form-status ${isSuccess ? 'success' : 'error'}`;
+    statusDiv.textContent = message;
+    statusDiv.style.display = 'block';
+    
+    // Hide status message after 10 seconds
+    setTimeout(() => {
+      statusDiv.style.display = 'none';
+    }, 10000);
+  }
+
   form.addEventListener('submit', async function(e) {
     e.preventDefault();
 
@@ -189,24 +209,17 @@ document.addEventListener('DOMContentLoaded', function() {
     submitBtn.textContent = 'Sending...';
 
     // Get form data
-    const formData = new FormData(form);
-    
+    const formData = {
+      name: document.getElementById('name').value,
+      email: document.getElementById('email').value,
+      message: document.getElementById('message').value
+    };
+
     try {
-      // Submit to Formspree (you'll need to configure this with your Formspree endpoint)
-      // Alternative: Use Web3Forms, Formsubmit, or similar service
-      // For now, using a GitHub Issue as backend through GitHub's API
+      // Attempt to create a GitHub issue for automated processing
+      const issueTitle = `Contact Form: ${formData.name}`;
+      const issueBody = `**Name:** ${formData.name}\n**Email:** ${formData.email}\n\n**Message:**\n\n${formData.message}\n\n---\n*Submitted via contact form at ${new Date().toISOString()}*`;
       
-      const data = {
-        name: document.getElementById('name').value,
-        email: document.getElementById('email').value,
-        message: document.getElementById('message').value
-      };
-      
-      // Create issue title and body
-      const issueTitle = `Contact Form: ${data.name}`;
-      const issueBody = `**Name:** ${data.name}\n**Email:** ${data.email}\n\n**Message:**\n\n${data.message}\n\n---\n*Submitted via contact form at ${new Date().toISOString()}*`;
-      
-      // Try to create a GitHub issue (this works for public repos)
       const response = await fetch('https://api.github.com/repos/DerekRoberts/hugo/issues', {
         method: 'POST',
         headers: {
@@ -221,48 +234,25 @@ document.addEventListener('DOMContentLoaded', function() {
       });
 
       if (response.ok) {
-        // Success
-        statusDiv.className = 'form-status success';
-        statusDiv.textContent = 'Thank you for your message! We will get back to you soon.';
-        statusDiv.style.display = 'block';
-        form.reset();
-      } else if (response.status === 401 || response.status === 403) {
-        // Authentication required - fallback to mailto
-        const subject = `Contact Form - ${data.name}`;
-        const body = `Name: ${data.name}\nEmail: ${data.email}\n\nMessage:\n${data.message}`;
-        const mailtoLink = `mailto:info@metacurious.ca?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-        window.location.href = mailtoLink;
-        
-        statusDiv.className = 'form-status success';
-        statusDiv.textContent = 'Opening your email client... We\'ll get back to you soon!';
-        statusDiv.style.display = 'block';
+        // Successfully created issue - automated email will be sent
+        showStatus(true, 'Thank you for your message! We will get back to you soon.');
         form.reset();
       } else {
-        throw new Error('Failed to submit form');
+        // GitHub Issues not available - use mailto fallback
+        throw new Error('GitHub Issues not available');
       }
     } catch (error) {
-      console.error('Form submission error:', error);
-      // Fallback to mailto
-      const subject = `Contact Form - ${document.getElementById('name').value}`;
-      const body = `Name: ${document.getElementById('name').value}\nEmail: ${document.getElementById('email').value}\n\nMessage:\n${document.getElementById('message').value}`;
-      const mailtoLink = `mailto:info@metacurious.ca?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-      
-      window.location.href = mailtoLink;
-      statusDiv.className = 'form-status success';
-      statusDiv.textContent = 'Opening your email client... We\'ll get back to you soon!';
-      statusDiv.style.display = 'block';
+      // Use mailto fallback for reliable submission
+      console.log('Using mailto fallback');
+      openMailto(formData.name, formData.email, formData.message);
+      showStatus(true, 'Opening your email client... We\'ll get back to you soon!');
       form.reset();
     } finally {
-      // Re-enable the submit button after a delay
+      // Re-enable the submit button
       setTimeout(() => {
         submitBtn.disabled = false;
         submitBtn.textContent = 'Send the form';
       }, 2000);
-
-      // Hide status message after 10 seconds
-      setTimeout(() => {
-        statusDiv.style.display = 'none';
-      }, 10000);
     }
   });
 });
