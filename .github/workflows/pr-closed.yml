@@ -1,0 +1,42 @@
+name: PR Close
+
+on:
+  pull_request:
+    types: [closed]
+
+permissions:
+  contents: write
+
+defaults:
+  run:
+    shell: bash
+
+jobs:
+  cleanup:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+
+      - name: Remove PR preview directory
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          
+          # Fetch and checkout gh-pages branch
+          git fetch origin gh-pages:gh-pages 2>/dev/null || exit 0
+          git checkout gh-pages || exit 0
+          
+          # Remove the pr directory if it exists
+          if [ -d "pr-${{ github.event.pull_request.number }}" ]; then
+            rm -rf pr-${{ github.event.pull_request.number }}
+            
+            # Commit and push
+            git add -A
+            git commit -m "Remove preview for closed PR #${{ github.event.pull_request.number }}"
+            git push origin gh-pages
+          else
+            echo "PR preview directory not found, nothing to clean up"
+          fi
