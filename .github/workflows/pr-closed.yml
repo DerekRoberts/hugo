@@ -55,5 +55,5 @@ jobs:
               issue_number: context.payload.pull_request.number,
               body: `⚠️ **Preview cleanup failed**\n\n` +
                     `There was an error removing the preview deployment from GitHub Pages. ` +
-                    `Please check the [workflow run](${context.payload.repository.html_url}/actions/runs/${context.runId}) for details.`
+                    `Please check the [workflow run](https://github.com/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}) for details.`
             });
