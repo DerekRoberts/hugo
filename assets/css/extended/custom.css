@@ -28,6 +28,7 @@
     display: inline-block;
     width: 32px;
     height: 32px;
+    /* Logo path matches baseURL configuration in hugo.toml */
     background-image: url('/hugo/logo.svg');
     background-size: contain;
     background-repeat: no-repeat;

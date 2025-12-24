@@ -17,7 +17,6 @@ theme = 'PaperMod'
   defaultTheme = "light"
   ShowFullTextinRSS = true
   ShowPostNavLinks = true
-  ShowCodeCopyButtons = false
   disableSpecial1stPost = false
   disableScrollToTop = false
   comments = false
