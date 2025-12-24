@@ -76,7 +76,7 @@ jobs:
           git push --force https://github.com/${{ github.repository }}.git gh-pages
 
       - name: Comment PR
-        uses: actions/github-script@v7
+        uses: actions/github-script@v8
         with:
           script: |
             const url = `https://${context.repo.owner}.github.io/${context.repo.repo}/pr-${context.payload.pull_request.number}/`;
@@ -145,7 +145,7 @@ jobs:
           fi
 
       - name: Comment PR
-        uses: actions/github-script@v7
+        uses: actions/github-script@v8
         with:
           script: |
             await github.rest.issues.createComment({
