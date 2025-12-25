@@ -6,6 +6,7 @@ on:
 
 permissions:
   contents: write
+  pull-requests: write
 
 defaults:
   run:
@@ -21,13 +22,21 @@ jobs:
           fetch-depth: 0
 
       - name: Remove PR preview directory
+        id: cleanup
+        continue-on-error: true
         run: |
+          set -e
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           
           # Fetch and checkout gh-pages branch
-          git fetch origin gh-pages:gh-pages 2>/dev/null || exit 0
-          git checkout gh-pages || exit 0
+          # If gh-pages doesn't exist, that's ok - nothing to clean up
+          if ! git fetch origin gh-pages:gh-pages 2>/dev/null; then
+            echo "No gh-pages branch found, nothing to clean up"
+            exit 0
+          fi
+          
+          git checkout gh-pages
           
           # Remove the pr directory if it exists
           if [ -d "pr-${{ github.event.pull_request.number }}" ]; then
@@ -40,3 +49,16 @@ jobs:
           else
             echo "PR preview directory not found, nothing to clean up"
           fi
+
+      - name: Comment on cleanup failure
+        if: steps.cleanup.outcome == 'failure'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: '⚠️ **Warning:** Failed to clean up PR preview deployment.\n\nThe preview directory `pr-${{ github.event.pull_request.number }}` may need to be manually removed from the `gh-pages` branch.'
+            });
+
