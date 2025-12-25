@@ -69,7 +69,17 @@ Empowering emerging leaders to foster equitable communities through transformati
   weight = 30
 
 [[menu.main]]
-  name = "Let's Connect"
+  name = "Services"
+  url = "/services/"
+  weight = 40
+
+[[menu.main]]
+  name = "Blog"
+  url = "https://derek-roberts.medium.com/"
+  weight = 45
+
+[[menu.main]]
+  name = "Contact"
   url = "/contact/"
   weight = 40
 
