@@ -1,38 +1,5 @@
 {{ define "main" }}
 <div class="home-page">
-  <!-- Navigation Menu -->
-  <nav class="home-navigation">
-    <ul class="nav-menu">
-      {{- range .Site.Menus.main }}
-      <li class="nav-item">
-        <a href="{{ .URL }}" class="nav-link{{ if $.IsMenuCurrent "main" . }} active{{ end }}">{{ .Name }}</a>
-      </li>
-      {{- end }}
-    </ul>
-  </nav>
-
-  <!-- Logo and Title Section -->
-  <div class="header-section">
-    <div class="logo-container">
-      <img src="{{ .Site.BaseURL }}logo.avif" alt="MetaCurious Logo" class="site-logo">
-    </div>
-    <div class="title-section">
-      <h1 class="site-title">MetaCurious</h1>
-      <p class="site-tagline">Coaching emerging leaders for more equitable communities</p>
-    </div>
-    <div class="social-icons-header">
-      {{ range .Site.Params.socialIcons }}
-      <a href="{{ .url }}" target="_blank" rel="noopener noreferrer" title="{{ .title }}" aria-label="Visit our {{ .title }} page" class="social-icon">
-        {{ if eq .name "instagram" }}
-        {{ partial "icon-instagram.html" . }}
-        {{ else if eq .name "facebook" }}
-        {{ partial "icon-facebook.html" . }}
-        {{ end }}
-      </a>
-      {{ end }}
-    </div>
-  </div>
-
   <!-- Welcome Section -->
   <div class="welcome-section">
     <div class="welcome-content">
@@ -61,8 +28,6 @@
   --text-light: #555;
   --button-bg: #4a4a4a;
   --button-bg-hover: #333;
-  --instagram-color: #E1306C;
-  --facebook-color: #1877F2;
   --welcome-bg: #f5f3ff;
   --border-color: #e0e0e0;
   --white: white;
@@ -82,116 +47,6 @@ body.list {
   margin: 0 auto;
   padding: 2rem 1rem;
   background-color: var(--bg-light);
-}
-
-.home-navigation {
-  display: flex;
-  justify-content: flex-end;
-  margin-bottom: 2rem;
-  padding: 1rem 0;
-}
-
-.nav-menu {
-  display: flex;
-  list-style: none;
-  gap: 2rem;
-  margin: 0;
-  padding: 0;
-}
-
-.nav-item {
-  margin: 0;
-}
-
-.nav-link {
-  color: var(--text-dark);
-  text-decoration: none;
-  font-size: 1rem;
-  font-weight: 400;
-  transition: color 0.2s;
-}
-
-.nav-link:hover,
-.nav-link.active {
-  color: var(--text-medium);
-  text-decoration: underline;
-}
-
-.header-section {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 3rem;
-  gap: 2rem;
-  flex-wrap: wrap;
-}
-
-.logo-container {
-  flex: 0 0 auto;
-}
-
-.site-logo {
-  width: 120px;
-  height: 120px;
-  object-fit: contain;
-}
-
-.title-section {
-  flex: 1;
-  min-width: 300px;
-}
-
-.site-title {
-  font-size: 3rem;
-  font-weight: 700;
-  margin: 0;
-  color: var(--text-dark);
-  line-height: 1.2;
-}
-
-.site-tagline {
-  font-size: 1.25rem;
-  color: var(--text-medium);
-  margin: 0.5rem 0 0 0;
-  line-height: 1.4;
-}
-
-.social-icons-header {
-  display: flex;
-  gap: 1rem;
-  align-items: center;
-}
-
-.social-icon {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 40px;
-  height: 40px;
-  border-radius: 4px;
-  transition: all 0.2s;
-}
-
-.social-icon:hover {
-  opacity: 0.7;
-}
-
-.social-icon[title="Instagram"] {
-  color: var(--instagram-color);
-  background-color: var(--instagram-color);
-}
-
-.social-icon[title="Instagram"] svg {
-  color: var(--white);
-}
-
-.social-icon[title="Facebook"] {
-  color: var(--facebook-color);
-  background-color: var(--facebook-color);
-}
-
-.social-icon[title="Facebook"] svg {
-  color: var(--white);
 }
 
 .welcome-section {
@@ -271,24 +126,6 @@ body.list {
 }
 
 @media (max-width: 768px) {
-  .header-section {
-    flex-direction: column;
-    align-items: flex-start;
-    text-align: left;
-  }
-
-  .site-title {
-    font-size: 2rem;
-  }
-
-  .site-tagline {
-    font-size: 1rem;
-  }
-
-  .social-icons-header {
-    margin-top: 1rem;
-  }
-
   .welcome-section {
     flex-direction: column;
     padding: 2rem;
@@ -308,15 +145,6 @@ body.list {
 @media (max-width: 480px) {
   .home-page {
     padding: 1rem;
-  }
-
-  .site-logo {
-    width: 80px;
-    height: 80px;
-  }
-
-  .site-title {
-    font-size: 1.75rem;
   }
 
   .welcome-section {
