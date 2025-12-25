@@ -25,7 +25,6 @@ jobs:
         id: cleanup
         continue-on-error: true
         run: |
-          set -e
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           
@@ -56,9 +55,9 @@ jobs:
         with:
           script: |
             github.rest.issues.createComment({
-              issue_number: context.issue.number,
+              issue_number: context.payload.pull_request.number,
               owner: context.repo.owner,
               repo: context.repo.repo,
-              body: `⚠️ **Warning:** Failed to clean up PR preview deployment.\n\nThe preview directory \`pr-${context.issue.number}\` may need to be manually removed from the \`gh-pages\` branch.`
+              body: `⚠️ **Warning:** Failed to clean up PR preview deployment.\n\nThe preview directory \`pr-${context.payload.pull_request.number}\` may need to be manually removed from the \`gh-pages\` branch.`
             });
 
