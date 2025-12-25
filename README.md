@@ -25,8 +25,11 @@ The site includes a contact form at `/contact/` with the following features:
 - Direct email sending via Formspree (no email client required)
 - Responsive design matching the site theme
 - AJAX submission with success/error messages
+- Configurable via GitHub Secrets or hugo.toml
 
-For detailed setup instructions, see [CONTACT_FORM_SETUP.md](CONTACT_FORM_SETUP.md).
+**⚠️ Setup Required**: The contact form requires a Formspree endpoint to be configured.  
+📋 **Quick Setup Guide**: [SETUP_CONTACT_FORM.md](SETUP_CONTACT_FORM.md) (5 minute setup)  
+📚 **Detailed Documentation**: [CONTACT_FORM_SETUP.md](CONTACT_FORM_SETUP.md)
 
 ## Local Development
 

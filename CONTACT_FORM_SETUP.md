@@ -12,7 +12,13 @@ When a user submits the contact form:
 
 ## Setup Instructions
 
-### Step 1: Create a Free Formspree Account
+There are two ways to configure the contact form:
+
+### Option A: Using GitHub Secrets (Recommended for GitHub Pages)
+
+This is the recommended approach for security and maintainability.
+
+#### Step 1: Create a Free Formspree Account
 
 1. Go to [https://formspree.io/register](https://formspree.io/register)
 2. Sign up for a free account (free tier allows 50 submissions/month)
@@ -36,21 +42,26 @@ https://formspree.io/f/YOUR_FORM_ID
 
 Copy this URL - you'll need it in the next step.
 
-### Step 4: Update the Contact Form
+### Step 4: Configure via GitHub Secrets
 
-Edit the file `layouts/contact/single.html` and find the form element:
+1. Go to your GitHub repository
+2. Click on "Settings" → "Secrets and variables" → "Actions"
+3. Click "New repository secret"
+4. Name: `FORMSPREE_ENDPOINT`
+5. Value: Paste your Formspree endpoint URL (e.g., `https://formspree.io/f/YOUR_FORM_ID`)
+6. Click "Add secret"
 
-**Find this line:**
-```html
-<form id="contact-form" class="contact-form">
-```
+The workflow will automatically use this secret when building and deploying your site.
 
-**Replace it with:**
-```html
-<form id="contact-form" class="contact-form" action="https://formspree.io/f/YOUR_FORM_ID">
-```
+## How GitHub Secrets Work with Hugo
 
-Replace `YOUR_FORM_ID` with your actual Formspree form ID from Step 3.
+When you set the `FORMSPREE_ENDPOINT` secret in GitHub:
+1. The GitHub Actions workflow passes it as an environment variable `HUGO_PARAMS_FORMSPREEENDPOINT`
+2. Hugo automatically reads environment variables prefixed with `HUGO_PARAMS_` and maps them to `site.Params`
+3. The contact form template uses `{{ .Site.Params.formspreeEndpoint }}` to access the value
+4. The form's `action` attribute is set dynamically during the build process
+
+This means your Formspree endpoint is never stored in the repository - it's only injected during deployment.
 
 ### Step 5: Test the Form
 
@@ -91,10 +102,13 @@ If you prefer not to create an account, you can use Web3Forms:
 ## Troubleshooting
 
 ### Form submissions not received
-- Verify your Formspree form ID is correct in the HTML
+- Verify your Formspree form ID is correct
+  - If using GitHub secrets: Check that `FORMSPREE_ENDPOINT` secret is set correctly
+  - If using hugo.toml: Verify `formspreeEndpoint` parameter is set
 - Check your email spam/junk folder
 - Verify the email address in Formspree settings matches your desired recipient
 - Check Formspree dashboard for submission logs
+- View the HTML source of your deployed contact page to confirm the form's `action` attribute is set
 
 ### Error message when submitting
 - Check browser console (F12) for JavaScript errors
@@ -154,10 +168,20 @@ For questions about Formspree:
 
 ## Quick Start Summary
 
+### Using GitHub Secrets (Recommended):
 1. Sign up at formspree.io (free account)
 2. Create a new form and set your email address
 3. Copy the form endpoint URL (e.g., `https://formspree.io/f/abcd1234`)
-4. Edit `layouts/contact/single.html` - find the `<form>` tag and add `action="YOUR_FORMSPREE_URL"`
+4. In GitHub: Settings → Secrets and variables → Actions → New repository secret
+5. Name: `FORMSPREE_ENDPOINT`, Value: your endpoint URL
+6. Commit and push - the workflow will automatically use the secret
+7. Test the form on your deployed site
+
+### Using Direct Configuration:
+1. Sign up at formspree.io (free account)
+2. Create a new form and set your email address
+3. Copy the form endpoint URL (e.g., `https://formspree.io/f/abcd1234`)
+4. Edit `hugo.toml` - set `formspreeEndpoint = "YOUR_FORMSPREE_URL"`
 5. Commit, push, and test!
 
 That's it - your contact form will now send emails directly without opening an email client.
