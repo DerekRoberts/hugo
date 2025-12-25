@@ -64,8 +64,8 @@ Empowering emerging leaders to foster equitable communities through transformati
   weight = 20
 
 [[menu.main]]
-  name = "Blog"
-  url = "/blog/"
+  name = "Contact"
+  url = "/contact/"
   weight = 30
 
 [[menu.main]]
@@ -76,12 +76,7 @@ Empowering emerging leaders to foster equitable communities through transformati
 [[menu.main]]
   name = "Blog"
   url = "https://derek-roberts.medium.com/"
-  weight = 45
-
-[[menu.main]]
-  name = "Contact"
-  url = "/contact/"
-  weight = 40
+  weight = 50
 
 [outputs]
   home = ["HTML", "RSS", "JSON"]
