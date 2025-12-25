@@ -35,7 +35,10 @@ jobs:
             exit 0
           fi
           
-          git checkout gh-pages
+          if ! git checkout gh-pages; then
+            echo "Error: Failed to checkout gh-pages branch"
+            exit 1
+          fi
           
           # Remove the pr directory if it exists
           if [ -d "pr-${{ github.event.pull_request.number }}" ]; then
