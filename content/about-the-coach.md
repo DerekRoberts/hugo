@@ -52,4 +52,4 @@ If you're an emerging leader committed to social equity, seeking to develop your
 
 ---
 
-*Interested in working together?* [Learn about our services](/services/) or [get in touch](/contact/).
+*Interested in working together?* [Learn about our services]({{< relref "/services.md" >}}) or [get in touch]({{< relref "/contact.md" >}}).

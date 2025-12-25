@@ -63,9 +63,9 @@ Coaching sessions are conducted:
 
 If you have questions before reaching out, you might find answers on our:
 
-- [About page](/about/) - Learn about our mission and approach
-- [Services page](/services/) - Explore our coaching offerings
-- [About the Coach](/about-the-coach/) - Meet your coach
+- [About page]({{< relref "/about.md" >}}) - Learn about our mission and approach
+- [Services page]({{< relref "/services.md" >}}) - Explore our coaching offerings
+- [About the Coach]({{< relref "/about-the-coach.md" >}}) - Meet your coach
 
 We look forward to hearing from you and exploring how MetaCurious can support your leadership journey toward greater equity and justice.
 

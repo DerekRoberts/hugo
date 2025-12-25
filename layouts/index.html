@@ -14,7 +14,7 @@
   <!-- Logo and Title Section -->
   <div class="header-section">
     <div class="logo-container">
-      <img src="{{ .Site.BaseURL }}logo.avif" alt="MetaCurious Logo" class="site-logo">
+      <img src="{{ "logo.avif" | absURL }}" alt="MetaCurious Logo" class="site-logo">
     </div>
     <div class="title-section">
       <h1 class="site-title">MetaCurious</h1>
@@ -43,7 +43,7 @@
       <a href="{{ "about/" | absURL }}" class="learn-more-btn">Learn more about coaching</a>
     </div>
     <div class="welcome-illustration">
-      <img src="{{ .Site.BaseURL }}main.avif" alt="Illustration representing personal growth and reflection through coaching" class="illustration-img">
+      <img src="{{ "main.avif" | absURL }}" alt="Illustration representing personal growth and reflection through coaching" class="illustration-img">
     </div>
   </div>
 
