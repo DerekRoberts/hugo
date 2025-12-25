@@ -34,6 +34,7 @@ jobs:
         env:
           HUGO_ENVIRONMENT: production
           HUGO_ENV: production
+          HUGO_PARAMS_FORMSPREEENDPOINT: ${{ secrets.FORMSPREE_ENDPOINT }}
         run: |
           hugo --minify --baseURL "https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/pr-${{ github.event.pull_request.number }}/"
 
