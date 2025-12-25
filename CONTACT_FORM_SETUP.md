@@ -38,7 +38,7 @@ Copy this URL - you'll need it in the next step.
 
 ### Step 4: Update the Contact Form
 
-Edit the file `layouts/contact/single.html` and update line 17:
+Edit the file `layouts/contact/single.html` and find the form element:
 
 **Find this line:**
 ```html
@@ -86,7 +86,7 @@ If you prefer not to create an account, you can use Web3Forms:
 </form>
 ```
 
-5. Update the JavaScript (line 227) to post to Web3Forms:
+5. Update the JavaScript in `layouts/contact/single.html` to use Web3Forms endpoint. Find the line with `form.getAttribute('action')` and ensure it returns the Web3Forms URL:
 ```javascript
 const formAction = form.getAttribute('action') || 'https://api.web3forms.com/submit';
 ```
@@ -157,10 +157,10 @@ For questions about Formspree:
 
 ## Quick Start Summary
 
-1. Sign up at formspree.io
-2. Create a new form, set your email
-3. Copy the form endpoint URL
-4. Edit `layouts/contact/single.html` line 17 to add `action="YOUR_FORMSPREE_URL"`
+1. Sign up at formspree.io (free account)
+2. Create a new form and set your email address
+3. Copy the form endpoint URL (e.g., `https://formspree.io/f/abcd1234`)
+4. Edit `layouts/contact/single.html` - find the `<form>` tag and add `action="YOUR_FORMSPREE_URL"`
 5. Commit, push, and test!
 
 That's it - your contact form will now send emails directly without opening an email client.

@@ -204,9 +204,12 @@ document.addEventListener('DOMContentLoaded', function() {
     const formData = new FormData(form);
 
     try {
-      // Submit to Formspree - replace YOUR_FORM_ID with actual Formspree form ID
-      // or use the form action attribute if set
-      const formAction = form.getAttribute('action') || 'https://formspree.io/f/YOUR_FORM_ID';
+      // Submit to Formspree
+      const formAction = form.getAttribute('action');
+      
+      if (!formAction || formAction.includes('YOUR_FORM_ID')) {
+        throw new Error('Form not configured. Please set up Formspree endpoint in the form action attribute. See CONTACT_FORM_SETUP.md for instructions.');
+      }
       
       const response = await fetch(formAction, {
         method: 'POST',
@@ -222,15 +225,15 @@ document.addEventListener('DOMContentLoaded', function() {
         form.reset();
       } else {
         const data = await response.json();
-        if (data.errors) {
-          showStatus(false, 'There was an error submitting the form. Please try again.');
-        } else {
-          showStatus(false, 'There was an error submitting the form. Please try again.');
-        }
+        const errorMsg = data.errors ? data.errors.map(e => e.message).join(', ') : 'There was an error submitting the form. Please try again.';
+        showStatus(false, errorMsg);
       }
     } catch (error) {
       console.error('Form submission error:', error);
-      showStatus(false, 'There was an error submitting the form. Please check your internet connection and try again.');
+      const errorMessage = error.message.includes('Form not configured') 
+        ? 'Form not configured yet. Please contact us at info@metacurious.ca'
+        : 'There was an error submitting the form. Please check your internet connection and try again.';
+      showStatus(false, errorMessage);
     } finally {
       // Re-enable the submit button
       setTimeout(() => {
