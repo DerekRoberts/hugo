@@ -23,7 +23,7 @@ The repository has been updated to support configuring the Formspree endpoint vi
 1. Log into Formspree
 2. Click "New Form" or the "+" button
 3. Give it a name like "MetaCurious Contact Form"
-4. **Important**: Set the email address where you want to receive messages (e.g., `info@metacurious.ca` or the email from `${{ secrets.email }}`)
+4. **Important**: Set the email address where you want to receive messages (e.g., `info@metacurious.ca` or your preferred contact email address)
 5. Click "Create Form"
 
 ### 3. Get Your Form Endpoint
