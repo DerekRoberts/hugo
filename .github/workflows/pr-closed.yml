@@ -49,17 +49,3 @@ jobs:
           else
             echo "PR preview directory not found, nothing to clean up"
           fi
-
-      - name: Comment on cleanup failure
-        if: steps.cleanup.outcome == 'failure'
-        uses: actions/github-script@v7
-        with:
-          script: |
-            await github.rest.issues.createComment({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              issue_number: context.payload.pull_request.number,
-              body: `⚠️ **Preview cleanup failed**\n\n` +
-                    `There was an error removing the preview deployment from GitHub Pages. ` +
-                    `Please check the [workflow run](https://github.com/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}) for details.`
-            });
