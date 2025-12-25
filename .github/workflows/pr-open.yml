@@ -68,6 +68,9 @@ jobs:
           # Copy built files to pr directory
           cp -r ${{ github.workspace }}/public/* "$TEMP_DIR/pr-${{ github.event.pull_request.number }}/"
           
+          # Add .nojekyll to prevent GitHub Pages from processing with Jekyll
+          touch "$TEMP_DIR/.nojekyll"
+          
           # Navigate to temp directory and push
           cd "$TEMP_DIR"
           git add .
