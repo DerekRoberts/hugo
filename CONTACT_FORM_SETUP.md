@@ -42,7 +42,7 @@ https://formspree.io/f/YOUR_FORM_ID
 
 Copy this URL - you'll need it in the next step.
 
-### Step 4: Configure via GitHub Secrets (Option A)
+### Step 4: Configure via GitHub Secrets
 
 1. Go to your GitHub repository
 2. Click on "Settings" → "Secrets and variables" → "Actions"
@@ -52,26 +52,6 @@ Copy this URL - you'll need it in the next step.
 6. Click "Add secret"
 
 The workflow will automatically use this secret when building and deploying your site.
-
-### Step 4 Alternative: Configure Directly in hugo.toml (Option B)
-
-If you prefer not to use GitHub secrets, you can configure the endpoint directly:
-
-Edit the file `hugo.toml` and find the contact form configuration section:
-
-**Find this line:**
-```toml
-formspreeEndpoint = ""
-```
-
-**Replace it with:**
-```toml
-formspreeEndpoint = "https://formspree.io/f/YOUR_FORM_ID"
-```
-
-Replace `YOUR_FORM_ID` with your actual Formspree form ID from Step 3.
-
-**Note**: Using GitHub secrets (Option A) is more secure and prevents exposing your form ID in the repository.
 
 ## How GitHub Secrets Work with Hugo
 
