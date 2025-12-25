@@ -1,137 +1,166 @@
 # Contact Form Setup
 
-The contact page includes a form that allows visitors to send messages. The form has two submission mechanisms:
+The contact page includes a form that sends messages directly via email using Formspree, a free form backend service for static sites.
 
-## Current Implementation: mailto Fallback
+## How It Works
 
-The contact form currently uses a **mailto link** as its primary submission method. When a user clicks "Send the form":
-1. The form attempts to create a GitHub issue (requires authentication)
-2. If that fails, it falls back to opening the user's email client with pre-filled data
-3. The form fields are cleared and a success message is displayed
+When a user submits the contact form:
+1. The form data is sent to Formspree's servers via AJAX
+2. Formspree validates the data and sends an email to the configured address
+3. The user sees a success message without leaving the page
+4. No email client opens - everything happens in the background
 
-This is a reliable, zero-configuration approach that works immediately.
+## Setup Instructions
 
-## Optional: GitHub Issues + Email Workflow
+### Step 1: Create a Free Formspree Account
 
-For a more automated experience, you can configure the repository to automatically send emails when contact form submissions are received as GitHub issues.
+1. Go to [https://formspree.io/register](https://formspree.io/register)
+2. Sign up for a free account (free tier allows 50 submissions/month)
+3. Verify your email address
 
-### Prerequisites
+### Step 2: Create a New Form
 
-To enable automated email sending, you need:
-- A Gmail account (or other SMTP email service)
-- GitHub repository with Issues enabled
-- The following GitHub Secrets configured
+1. Log into Formspree
+2. Click "New Form" or "+" button
+3. Give your form a name (e.g., "MetaCurious Contact Form")
+4. Set the email address where you want to receive submissions
+   - Enter the email address where you want to receive contact form messages (e.g., `info@metacurious.ca`)
+5. Click "Create Form"
 
-### GitHub Secrets Configuration
+### Step 3: Get Your Form Endpoint
 
-Add the following secrets to your repository:
-
-1. **`CONTACT_EMAIL`** - The email address where contact form submissions should be sent
-   - Example: `info@metacurious.ca`
-
-2. **`EMAIL_USERNAME`** - The email account username for SMTP authentication
-   - For Gmail: your full email address (e.g., `your-email@gmail.com`)
-
-3. **`EMAIL_PASSWORD`** - The email account password or app-specific password
-   - For Gmail: Use an [App Password](https://support.google.com/accounts/answer/185833)
-   - **Important**: For Gmail, you must use an App Password, not your regular password
-
-### Setting Up GitHub Secrets
-
-1. Go to your repository on GitHub
-2. Navigate to **Settings** → **Secrets and variables** → **Actions**
-3. Click **New repository secret**
-4. Add each secret with its name and value
-5. Save the secrets
-
-### How It Works
-
-The workflow in `.github/workflows/contact-form.yml`:
-
-1. **Trigger**: Runs when a new issue is opened with the `contact-form` label
-2. **Parse**: Extracts name, email, and message from the issue body
-3. **Send Email**: Uses the configured SMTP server to send an email notification
-4. **Close**: Closes the issue automatically after processing
-
-### Gmail Configuration
-
-If using Gmail, follow these steps:
-
-1. **Enable 2-Step Verification**
-   - Go to your Google Account settings
-   - Security → 2-Step Verification → Turn On
-
-2. **Create App Password**
-   - Go to Security → 2-Step Verification → App passwords
-   - Select "Mail" and "Other (Custom name)"
-   - Name it "Hugo Contact Form"
-   - Copy the 16-character password
-
-3. **Add to GitHub Secrets**
-   - Use this app password for `EMAIL_PASSWORD`
-   - Use your full Gmail address for `EMAIL_USERNAME`
-
-### Alternative: Using a Form Service
-
-Instead of the GitHub Issues approach, you can use a third-party form service:
-
-#### Option 1: Formspree
-
-1. Sign up at [formspree.io](https://formspree.io)
-2. Create a new form
-3. Update the form's `action` attribute in `layouts/contact/single.html`:
-   ```html
-   <form id="contact-form" class="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
-   ```
-
-#### Option 2: Web3Forms
-
-1. Get a free access key at [web3forms.com](https://web3forms.com)
-2. Add a hidden field to the form:
-   ```html
-   <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY">
-   ```
-
-#### Option 3: Netlify Forms
-
-If deploying to Netlify, add the `netlify` attribute:
-```html
-<form id="contact-form" class="contact-form" netlify>
+After creating the form, Formspree will provide you with a unique endpoint URL that looks like:
+```
+https://formspree.io/f/YOUR_FORM_ID
 ```
 
-## Testing
+Copy this URL - you'll need it in the next step.
 
-To test the contact form:
+### Step 4: Update the Contact Form
 
-1. Navigate to `/contact/` on your site
-2. Fill in the Name, Email, and Message fields
-3. Click "Send the form"
-4. Your email client should open with pre-filled content
+Edit the file `layouts/contact/single.html` and update line 17:
+
+**Find this line:**
+```html
+<form id="contact-form" class="contact-form">
+```
+
+**Replace it with:**
+```html
+<form id="contact-form" class="contact-form" action="https://formspree.io/f/YOUR_FORM_ID">
+```
+
+Replace `YOUR_FORM_ID` with your actual Formspree form ID from Step 3.
+
+### Step 5: Test the Form
+
+1. Deploy your changes (commit and push)
+2. Go to your contact page
+3. Fill out and submit the form
+4. You should see a success message
+5. Check your email for the submission
+
+## Formspree Features
+
+- **Email notifications**: Receive submissions instantly via email
+- **Spam protection**: Built-in spam filtering with reCAPTCHA option
+- **Auto-responders**: Send automatic confirmation emails to users
+- **Webhook integration**: Integrate with other services
+- **Dashboard**: View all submissions in the Formspree dashboard
+- **Custom redirect**: Redirect users after successful submission
+- **AJAX support**: Submit forms without page reload (already configured)
+
+## Alternative: Web3Forms
+
+If you prefer not to create an account, you can use Web3Forms:
+
+1. Go to [https://web3forms.com](https://web3forms.com)
+2. Enter your email address
+3. You'll receive an access key via email
+4. Add the access key as a hidden field in the form (edit `layouts/contact/single.html`):
+
+```html
+<form id="contact-form" class="contact-form">
+  <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY">
+  <!-- existing form fields -->
+</form>
+```
+
+5. Update the JavaScript (line 227) to post to Web3Forms:
+```javascript
+const formAction = form.getAttribute('action') || 'https://api.web3forms.com/submit';
+```
 
 ## Troubleshooting
 
-### Mailto doesn't open
-- Check your browser settings for default email client
-- Try using a different browser
-- Ensure you have an email client installed
+### Form submissions not received
+- Verify your Formspree form ID is correct in the HTML
+- Check your email spam/junk folder
+- Verify the email address in Formspree settings matches your desired recipient
+- Check Formspree dashboard for submission logs
 
-### GitHub Workflow not running
-- Verify the issue has the `contact-form` label
-- Check that all GitHub secrets are properly configured
-- Review the Actions tab for error messages
+### Error message when submitting
+- Check browser console (F12) for JavaScript errors
+- Verify internet connection
+- Ensure form fields have correct `name` attributes (name, email, message)
+- Verify the Formspree endpoint URL is correct
 
-### Email not being sent
-- Verify SMTP credentials in GitHub Secrets
-- For Gmail, ensure you're using an App Password
-- Check the workflow logs in GitHub Actions
+### Formspree free tier limits
+- Free tier: 50 submissions/month
+- Paid tier: Unlimited submissions starting at $10/month
+- For higher volume, consider upgrading or switching to Web3Forms (unlimited free tier)
 
-## Security Notes
+### Form shows loading but never completes
+- Check for ad blockers or privacy extensions that may block Formspree
+- Verify CORS isn't being blocked by browser extensions
+- Try in an incognito/private browsing window
 
-- Never commit email credentials to the repository
-- Always use GitHub Secrets for sensitive data
-- Use App Passwords instead of main account passwords
-- The mailto fallback exposes the contact email in the page source
+## Email Template
+
+Formspree will send emails with the following information:
+- **From**: formspree@formspree.io (or your verified domain)
+- **Reply-To**: The email address entered in the form
+- **Subject**: Contact Form: [Name]
+- **Body**: Contains name, email, and message fields
+
+You can customize the email template and subject in Formspree's dashboard under form settings.
+
+## Privacy & Security
+
+- Formspree is GDPR compliant
+- All data is transmitted over HTTPS
+- Form submissions are encrypted in transit
+- You can enable reCAPTCHA for additional spam protection
+- Optional: Add honeypot field for additional spam filtering
+
+## Pricing
+
+- **Free**: 50 submissions/month
+- **Gold**: $10/month - Unlimited submissions, custom redirect, file uploads
+- **Platinum**: $40/month - Everything in Gold + advanced features
+
+For most personal/small business sites, the free tier is sufficient.
+
+## GitHub Actions Workflow (Optional)
+
+The existing `.github/workflows/contact-form.yml` file is no longer needed with Formspree. You can:
+- Keep it for reference
+- Delete it to clean up the repository
+- Use it for alternative implementations (e.g., GitHub Issues integration)
 
 ## Support
 
-For questions or issues, please refer to the [Hugo documentation](https://gohugo.io/documentation/) or open an issue in this repository.
+For questions about Formspree:
+- Documentation: [https://help.formspree.io](https://help.formspree.io)
+- Support: [https://formspree.io/contact](https://formspree.io/contact)
+- FAQ: [https://help.formspree.io/hc/en-us/categories/360002400634](https://help.formspree.io/hc/en-us/categories/360002400634)
+
+## Quick Start Summary
+
+1. Sign up at formspree.io
+2. Create a new form, set your email
+3. Copy the form endpoint URL
+4. Edit `layouts/contact/single.html` line 17 to add `action="YOUR_FORMSPREE_URL"`
+5. Commit, push, and test!
+
+That's it - your contact form will now send emails directly without opening an email client.
