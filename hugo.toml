@@ -34,7 +34,7 @@ theme = 'PaperMod'
 
   # Contact form configuration
   # Set this to your Formspree endpoint URL (e.g., "https://formspree.io/f/YOUR_FORM_ID")
-  # Can be overridden via HUGO_PARAMS_FORMSPREEENDPOINT environment variable
+  # Leave empty when using GitHub Secrets - will be overridden via HUGO_PARAMS_FORMSPREEENDPOINT environment variable
   formspreeEndpoint = ""
 
 [params.homeInfoParams]
