@@ -1,0 +1,257 @@
+{{ define "main" }}
+<article class="post-single">
+  <header class="post-header">
+    <h1 class="post-title">{{ .Title }}</h1>
+  </header>
+
+  <div class="post-content">
+    <div class="contact-container">
+      <div class="contact-info">
+        <h2>Connecting</h2>
+        <p>Having a conversation with a service provider can make a difference in how you may understand the services.</p>
+        <p>Often, clients don't realize their core needs until they have a conversation and a sample session.</p>
+        <p>Please fill out the form to book your time!</p>
+      </div>
+
+      <div class="contact-form-wrapper">
+        <form id="contact-form" class="contact-form">
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" required>
+          </div>
+
+          <div class="form-group">
+            <label for="email">Email *</label>
+            <input type="email" id="email" name="email" required>
+          </div>
+
+          <div class="form-group">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" rows="6" required></textarea>
+          </div>
+
+          <button type="submit" class="submit-btn">Send the form</button>
+        </form>
+
+        <div id="form-status" class="form-status" style="display: none;"></div>
+      </div>
+    </div>
+
+    <div class="contact-additional-content" style="display: none;">
+      {{ .Content }}
+    </div>
+  </div>
+</article>
+
+<style>
+.contact-container {
+  display: flex;
+  gap: 2rem;
+  margin-bottom: 3rem;
+  flex-wrap: wrap;
+}
+
+.contact-info {
+  flex: 1;
+  min-width: 280px;
+  background-color: #4a4a4a;
+  color: white;
+  padding: 2rem;
+  border-radius: 4px;
+}
+
+.contact-info h2 {
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  font-weight: 300;
+}
+
+.contact-info p {
+  margin-bottom: 1rem;
+  line-height: 1.6;
+}
+
+.contact-form-wrapper {
+  flex: 1.5;
+  min-width: 320px;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  color: var(--content);
+}
+
+.form-group input,
+.form-group textarea {
+  padding: 0.75rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
+  font-family: inherit;
+  background-color: var(--entry);
+  color: var(--content);
+  transition: border-color 0.2s;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: #5eb3b3;
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.submit-btn {
+  background-color: #5eb3b3;
+  color: white;
+  border: none;
+  padding: 1rem 2rem;
+  font-size: 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  font-weight: 500;
+}
+
+.submit-btn:hover {
+  background-color: #4a9999;
+}
+
+.submit-btn:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.form-status {
+  margin-top: 1rem;
+  padding: 1rem;
+  border-radius: 4px;
+  text-align: center;
+}
+
+.form-status.success {
+  background-color: #d4edda;
+  color: #155724;
+  border: 1px solid #c3e6cb;
+}
+
+.form-status.error {
+  background-color: #f8d7da;
+  color: #721c24;
+  border: 1px solid #f5c6cb;
+}
+
+.contact-additional-content {
+  margin-top: 2rem;
+}
+
+@media (max-width: 768px) {
+  .contact-container {
+    flex-direction: column;
+  }
+  
+  .contact-info {
+    min-width: 100%;
+  }
+  
+  .contact-form-wrapper {
+    min-width: 100%;
+  }
+}
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const form = document.getElementById('contact-form');
+  const statusDiv = document.getElementById('form-status');
+  const submitBtn = form.querySelector('.submit-btn');
+
+  // Helper function to show status message
+  function showStatus(isSuccess, message) {
+    statusDiv.className = `form-status ${isSuccess ? 'success' : 'error'}`;
+    statusDiv.textContent = message;
+    statusDiv.style.display = 'block';
+    
+    // Hide status message after 10 seconds
+    setTimeout(() => {
+      statusDiv.style.display = 'none';
+    }, 10000);
+  }
+
+  form.addEventListener('submit', async function(e) {
+    e.preventDefault();
+
+    // Disable the submit button
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Sending...';
+
+    // Get form data
+    const formData = new FormData(form);
+
+    try {
+      // Submit to Formspree
+      const formAction = form.getAttribute('action');
+      
+      if (!formAction || formAction.includes('YOUR_FORM_ID')) {
+        throw new Error('Form not configured. Please set up Formspree endpoint in the form action attribute. See CONTACT_FORM_SETUP.md for instructions.');
+      }
+      
+      const response = await fetch(formAction, {
+        method: 'POST',
+        body: formData,
+        headers: {
+          'Accept': 'application/json'
+        }
+      });
+
+      if (response.ok) {
+        // Successfully submitted
+        showStatus(true, 'Thank you for your message! We will get back to you soon.');
+        form.reset();
+      } else {
+        // Handle error response
+        let errorMsg = 'There was an error submitting the form. Please try again.';
+        try {
+          const data = await response.json();
+          if (data.errors && Array.isArray(data.errors)) {
+            errorMsg = data.errors.map(e => e.message).join(', ');
+          }
+        } catch (parseError) {
+          // Response was not JSON, use default error message
+          console.error('Could not parse error response:', parseError);
+        }
+        showStatus(false, errorMsg);
+      }
+    } catch (error) {
+      console.error('Form submission error:', error);
+      const errorMessage = error.message.includes('Form not configured') 
+        ? 'Form not configured yet. Please contact us at info@metacurious.ca'
+        : 'There was an error submitting the form. Please check your internet connection and try again.';
+      showStatus(false, errorMessage);
+    } finally {
+      // Re-enable the submit button
+      setTimeout(() => {
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Send the form';
+      }, 2000);
+    }
+  });
+});
+</script>
+
+{{ end }}
