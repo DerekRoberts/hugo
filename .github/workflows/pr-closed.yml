@@ -59,6 +59,6 @@ jobs:
               issue_number: context.issue.number,
               owner: context.repo.owner,
               repo: context.repo.repo,
-              body: '⚠️ **Warning:** Failed to clean up PR preview deployment.\n\nThe preview directory `pr-${{ github.event.pull_request.number }}` may need to be manually removed from the `gh-pages` branch.'
+              body: `⚠️ **Warning:** Failed to clean up PR preview deployment.\n\nThe preview directory \`pr-${context.issue.number}\` may need to be manually removed from the \`gh-pages\` branch.`
             });
 
