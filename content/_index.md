@@ -34,4 +34,4 @@ Focusing on personal and professional relationships, conflict resolution, and he
 
 ---
 
-*Ready to begin your transformative coaching journey?* [Contact us](/contact/) to learn more about how MetaCurious can support your leadership development.
+*Ready to begin your transformative coaching journey?* [Contact us]({{< relref "/contact.md" >}}) to learn more about how MetaCurious can support your leadership development.

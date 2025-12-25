@@ -110,4 +110,4 @@ MetaCurious is committed to making coaching accessible. We offer:
 
 If you're ready to invest in your leadership development and create transformative change, we'd love to hear from you.
 
-[Contact us](/contact/) to schedule a free consultation and explore how MetaCurious coaching can support your journey.
+[Contact us]({{< relref "/contact.md" >}}) to schedule a free consultation and explore how MetaCurious coaching can support your journey.

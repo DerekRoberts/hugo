@@ -39,4 +39,4 @@ Whether you're an emerging leader in a nonprofit, a community organizer, or some
 
 ---
 
-*Ready to learn more?* Explore [our services](/services/) or [meet the coach](/about-the-coach/).
+*Ready to learn more?* Explore [our services]({{< relref "/services.md" >}}) or [meet the coach]({{< relref "/about-the-coach.md" >}}).
