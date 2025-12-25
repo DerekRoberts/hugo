@@ -80,16 +80,13 @@ If you prefer not to create an account, you can use Web3Forms:
 4. Add the access key as a hidden field in the form (edit `layouts/contact/single.html`):
 
 ```html
-<form id="contact-form" class="contact-form">
+<form id="contact-form" class="contact-form" action="https://api.web3forms.com/submit">
   <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY">
   <!-- existing form fields -->
 </form>
 ```
 
-5. Update the JavaScript in `layouts/contact/single.html` to use Web3Forms endpoint. Find the line with `form.getAttribute('action')` and ensure it returns the Web3Forms URL:
-```javascript
-const formAction = form.getAttribute('action') || 'https://api.web3forms.com/submit';
-```
+**Note**: You must set both the `action` attribute and the `access_key` hidden field for Web3Forms to work properly.
 
 ## Troubleshooting
 

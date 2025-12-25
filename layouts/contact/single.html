@@ -224,8 +224,17 @@ document.addEventListener('DOMContentLoaded', function() {
         showStatus(true, 'Thank you for your message! We will get back to you soon.');
         form.reset();
       } else {
-        const data = await response.json();
-        const errorMsg = data.errors ? data.errors.map(e => e.message).join(', ') : 'There was an error submitting the form. Please try again.';
+        // Handle error response
+        let errorMsg = 'There was an error submitting the form. Please try again.';
+        try {
+          const data = await response.json();
+          if (data.errors && Array.isArray(data.errors)) {
+            errorMsg = data.errors.map(e => e.message).join(', ');
+          }
+        } catch (parseError) {
+          // Response was not JSON, use default error message
+          console.error('Could not parse error response:', parseError);
+        }
         showStatus(false, errorMsg);
       }
     } catch (error) {
