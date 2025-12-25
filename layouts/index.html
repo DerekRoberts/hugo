@@ -1,38 +1,5 @@
 {{ define "main" }}
 <div class="home-page">
-  <!-- Navigation Menu -->
-  <nav class="home-navigation">
-    <ul class="nav-menu">
-      {{- range .Site.Menus.main }}
-      <li class="nav-item">
-        <a href="{{ .URL }}" class="nav-link{{ if $.IsMenuCurrent "main" . }} active{{ end }}">{{ .Name }}</a>
-      </li>
-      {{- end }}
-    </ul>
-  </nav>
-
-  <!-- Logo and Title Section -->
-  <div class="header-section">
-    <div class="logo-container">
-      <img src="{{ "logo.avif" | absURL }}" alt="MetaCurious Logo" class="site-logo">
-    </div>
-    <div class="title-section">
-      <h1 class="site-title">MetaCurious</h1>
-      <p class="site-tagline">Coaching emerging leaders for more equitable communities</p>
-    </div>
-    <div class="social-icons-header">
-      {{ range .Site.Params.socialIcons }}
-      <a href="{{ .url }}" target="_blank" rel="noopener noreferrer" title="{{ .title }}" aria-label="Visit our {{ .title }} page" class="social-icon">
-        {{ if eq .name "instagram" }}
-        {{ partial "icon-instagram.html" . }}
-        {{ else if eq .name "facebook" }}
-        {{ partial "icon-facebook.html" . }}
-        {{ end }}
-      </a>
-      {{ end }}
-    </div>
-  </div>
-
   <!-- Welcome Section -->
   <div class="welcome-section">
     <div class="welcome-content">
@@ -40,10 +7,10 @@
       <div class="welcome-text">
         <p>At MetaCurious, I co-create with emerging leaders to achieve transformative outcomes through specialized coaching services. My mission is to empower leaders to navigate challenging conversations, situations, and survival mechanisms, cultivating more just and fair communities. Through personalized coaching, I provide leaders with sustainable insights for driving social equity initiatives, guiding them to lead with ethics, integrity, and a vision for inter-generational impact.</p>
       </div>
-      <a href="{{ "about/" | absURL }}" class="learn-more-btn">Learn more about coaching</a>
+      <a href="/about/" class="learn-more-btn">Learn more about coaching</a>
     </div>
     <div class="welcome-illustration">
-      <img src="{{ "main.avif" | absURL }}" alt="Illustration representing personal growth and reflection through coaching" class="illustration-img">
+      <img src="{{ .Site.BaseURL }}main.avif" alt="Illustration representing personal growth and reflection through coaching" class="illustration-img">
     </div>
   </div>
 
