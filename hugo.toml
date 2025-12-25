@@ -32,6 +32,11 @@ theme = 'PaperMod'
     favicon32x32 = "/favicon.svg"
     apple_touch_icon = "/logo.svg"
 
+  # Contact form configuration
+  # Set this to your Formspree endpoint URL (e.g., "https://formspree.io/f/YOUR_FORM_ID")
+  # Can be overridden via HUGO_PARAMS_FORMSPREEENDPOINT environment variable
+  formspreeEndpoint = ""
+
 [params.homeInfoParams]
   Title = "MetaCurious Coaching"
   Content = """
