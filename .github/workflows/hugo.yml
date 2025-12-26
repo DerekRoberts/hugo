@@ -1,4 +1,4 @@
-name: Deploy Hugo site to GitHub Pages
+name: Production - Deploy
 
 on:
   push:
@@ -44,17 +44,17 @@ jobs:
           # Configure git
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          
+
           # Setup git credentials
           git config --global credential.helper store
           echo "https://x-access-token:${{ github.token }}@github.com" > ~/.git-credentials
-          
+
           # Fetch gh-pages branch
           git fetch origin gh-pages:gh-pages 2>/dev/null || true
-          
+
           # Create a temporary directory for gh-pages content
           TEMP_DIR=$(mktemp -d)
-          
+
           # If gh-pages branch exists, check it out to temp directory to preserve PR previews
           if git rev-parse --verify gh-pages >/dev/null 2>&1; then
             git clone --branch gh-pages --single-branch https://github.com/${{ github.repository }}.git "$TEMP_DIR"
@@ -66,13 +66,13 @@ jobs:
             git init
             git checkout --orphan gh-pages
           fi
-          
+
           # Copy built files to root (excluding pr-* directories)
           cp -r ${{ github.workspace }}/public/* "$TEMP_DIR/"
-          
+
           # Add .nojekyll to prevent GitHub Pages from processing with Jekyll
           touch "$TEMP_DIR/.nojekyll"
-          
+
           # Navigate to temp directory and push
           cd "$TEMP_DIR"
           git add .
