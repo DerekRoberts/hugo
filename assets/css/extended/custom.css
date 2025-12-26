@@ -161,7 +161,7 @@
 }
 
 /* Reduce spacing between external link text and icon */
-/* Note: margin-left is intentionally minimal (0.01rem) for tight spacing */
+/* Note: margin-left is intentionally set to 0rem for tight spacing */
 .header .nav #menu a .external-link-icon {
     margin-left: 0rem;
     display: inline-block;
