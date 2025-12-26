@@ -6,7 +6,7 @@
 {{- $linkClass := .linkClass | default "nav-link" }}
 {{- $useSpan := .useSpan | default false }}
 {{- $useIsMenuCurrent := .useIsMenuCurrent | default false }}
-<ul{{ if $menuID }} id="{{ $menuID }}"{{ end }}{{ if $menuClass }} class="{{ $menuClass }}"{{ end }}>
+<ul{{ if $menuID }} id="{{ $menuID }}" {{ end }}{{ if $menuClass }} class="{{ $menuClass }}" {{ end }}>
     {{- range site.Menus.main }}
     {{- if or (not $hideHome) (ne .Name "Home") }}
     {{- $menu_item_url := (cond (strings.HasSuffix .URL "/") .URL (printf "%s/" .URL) ) | absLangURL }}
@@ -27,7 +27,7 @@
     {{- end }}
     {{- end }}
     {{- $is_external := findRE "://" .URL }}
-    <li{{ if $itemClass }} class="{{ $itemClass }}"{{ end }}>
+    <li{{ if $itemClass }} class="{{ $itemClass }}" {{ end }}>
         <a href="{{ .URL | absLangURL }}" {{- if or $linkClass $is_active
             }}class="{{ if $linkClass }}{{ $linkClass }}{{ end }}{{ if $is_active }} active{{ end }}" {{- end }} {{- if
             $is_search }} title="{{ .Title | default .Name }} (Alt + /)" accesskey="/" {{- else if .Title }}
