@@ -9,3 +9,7 @@ updates:
     directory: "/" # Location of .github/workflows
     schedule:
       interval: "monthly"
+  - package-ecosystem: "gitsubmodule" # Monitor git submodules (themes)
+    directory: "/"
+    schedule:
+      interval: "monthly"
