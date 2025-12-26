@@ -46,7 +46,7 @@
 .header .nav .nav-right #menu {
     margin: 0;
     overflow: visible;
-    gap: 1rem;
+    gap: 1.5rem;
 }
 
 .header .nav .nav-right #menu li+li {
