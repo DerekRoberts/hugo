@@ -49,7 +49,7 @@
 }
 
 .header .nav .nav-right #menu li + li {
-    margin-inline-start: 0.75rem;
+    margin-inline-start: 0.5rem !important;
 }
 
 /* Custom header styling */
