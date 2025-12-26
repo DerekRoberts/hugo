@@ -1,86 +1,98 @@
-# Metacurious Hugo Site
+# MetaCurious Website
 
-This repository contains the Hugo-based website for Metacurious, migrated from Wix.
+Hugo-based website for MetaCurious, coaching emerging leaders for more equitable communities.
 
 ## Overview
 
-Metacurious is now built with [Hugo](https://gohugo.io/), a fast and modern static site generator, and is hosted on [GitHub Pages](https://pages.github.com/).
+This site is built with [Hugo](https://gohugo.io/), a fast static site generator, and automatically deploys to GitHub Pages when changes are pushed to the `main` branch.
 
-## Site Structure
+## Quick Start
 
-- `content/` - Markdown content files
-- `layouts/` - Custom HTML templates
-- `static/` - Static assets (images, CSS, JS)
-- `themes/PaperMod/` - Hugo theme (via git submodule)
-- `hugo.toml` - Hugo configuration file
-- `.github/workflows/hugo.yml` - GitHub Actions workflow for deployment
+### Viewing the Site
 
-## Features
+The live site is available at: `https://derekroberts.github.io/hugo/`
 
-### Contact Form
+### Making Content Changes
 
-The site includes a contact form at `/contact/` with the following features:
-- Name, Email, and Message input fields
-- Client-side form validation
-- Direct email sending via Formspree (no email client required)
-- Responsive design matching the site theme
-- AJAX submission with success/error messages
-- Configurable via GitHub Secrets or hugo.toml
+Content files are in the `content/` directory:
+- `content/_index.md` - Homepage
+- `content/about-the-coach.md` - About page
+- `content/services.md` - Services page
+- `content/contact.md` - Contact page
 
-**⚠️ Setup Required**: The contact form requires a Formspree endpoint to be configured.  
-📋 **Quick Setup Guide**: [SETUP_CONTACT_FORM.md](SETUP_CONTACT_FORM.md) (5 minute setup)  
-📚 **Detailed Documentation**: [CONTACT_FORM_SETUP.md](CONTACT_FORM_SETUP.md)
+Simply edit these Markdown files and push changes. The site will automatically rebuild and deploy.
+
+### Adding New Content
+
+```bash
+# Create a new page
+hugo new content/my-page.md
+
+# Create a new blog post (if blog section exists)
+hugo new content/blog/my-post.md
+```
+
+## Contact Form Setup
+
+The contact form requires a Formspree endpoint to be configured.
+
+📋 **Quick Setup Guide**: [SETUP_CONTACT_FORM.md](SETUP_CONTACT_FORM.md)
 
 ## Local Development
 
+To preview changes locally before pushing:
+
 ### Prerequisites
 
-- Hugo v0.146.0 or higher (extended version)
+- [Hugo v0.146.0 or higher](https://gohugo.io/installation/) (extended version required)
 
-### Build and Serve
+### Running Locally
+
+```bash
+# Install theme dependencies (first time only)
+git submodule update --init --recursive
+
+# Start local server with live reload
+hugo server -D
+
+# Site will be available at http://localhost:1313/
+```
+
+### Building for Production
 
 ```bash
 # Build the site
-hugo
-
-# Serve locally with live reload
-hugo server -D
-
-# Build for production
 hugo --minify
 ```
 
-## Deployment
+The built site will be in the `public/` directory (this directory is git-ignored).
 
-The site automatically deploys to GitHub Pages via GitHub Actions when changes are pushed to the `main` branch.
+## Site Structure
 
-### Setup GitHub Pages
-
-1. Go to repository Settings → Pages
-2. Set Source to "GitHub Actions"
-3. The workflow will automatically build and deploy on push to main
+- `content/` - Markdown content files (edit these to update site content)
+- `layouts/` - HTML templates (custom styling and structure)
+- `static/` - Static assets (images, favicon)
+- `assets/` - CSS and other processed assets
+- `hugo.toml` - Site configuration (title, menu, theme settings)
+- `themes/PaperMod/` - Hugo theme (via git submodule)
 
 ## Theme
 
 This site uses the [PaperMod](https://github.com/adityatelange/hugo-PaperMod) theme, which provides:
 - Clean, minimalist design
-- Dark/light mode support
-- Fast performance
+- Dark/light mode toggle
 - Mobile-responsive layout
+- Fast performance
 
-## Content Management
+## Deployment
 
-Content is written in Markdown format. To add new content:
+Deployment is automatic via GitHub Actions:
+- Push changes to `main` branch
+- GitHub Actions builds and deploys to GitHub Pages
+- Site updates within 1-2 minutes
 
-```bash
-# Create a new blog post
-hugo new content/blog/my-post.md
-
-# Create a new page
-hugo new content/my-page.md
-```
+No manual deployment steps required.
 
 ## License
 
 Apache License 2.0 - See LICENSE file for details
-

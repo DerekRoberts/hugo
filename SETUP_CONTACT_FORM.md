@@ -70,7 +70,7 @@ formspreeEndpoint = "https://formspree.io/f/xyzabc123"
 
 ## How It Works
 
-- The GitHub Actions workflow (`.github/workflows/hugo.yml`) now passes the `FORMSPREE_ENDPOINT` secret as an environment variable
+- The GitHub Actions workflow (`.github/workflows/prod-deploy.yml`) passes the `FORMSPREE_ENDPOINT` secret as an environment variable
 - Hugo reads this during the build and injects it into the contact form template
 - The form's `action` attribute is set to your Formspree endpoint
 - When users submit the form, it sends to Formspree, which emails you
@@ -95,10 +95,6 @@ formspreeEndpoint = "https://formspree.io/f/xyzabc123"
 2. Try submitting the form
 3. Check the Console and Network tabs for error details
 4. Verify your Formspree form ID is correct
-
-## More Information
-
-For detailed documentation, see [CONTACT_FORM_SETUP.md](./CONTACT_FORM_SETUP.md)
 
 ## Summary
 
