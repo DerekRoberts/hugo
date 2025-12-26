@@ -58,11 +58,6 @@ Empowering emerging leaders to foster equitable communities through transformati
   url = "https://www.facebook.com/MetaCuriousCoaching"
 
 [[menu.main]]
-  name = "Home"
-  url = "/"
-  weight = 10
-
-[[menu.main]]
   name = "The Coach"
   url = "/about-the-coach/"
   weight = 20
