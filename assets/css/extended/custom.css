@@ -3,41 +3,47 @@
 /* Color scheme matching original metacurious.ca site */
 :root {
     /* Primary brand colors - warm earth tones */
-    --primary-color: #5c4033; /* Deep brown for trust and grounding */
-    --secondary-color: #8b6f47; /* Warm tan-brown */
-    --accent-color: #a67c52; /* Light brown/tan */
-    --text-dark: #3d2817; /* Rich dark brown for readability */
-    --text-light: #5c4033; /* Medium brown for secondary text */
-    --background-light: #f8f5f2; /* Warm light background */
-    --border-color: #e5ddd5; /* Subtle warm borders */
+    --primary-color: #5c4033;
+    /* Deep brown for trust and grounding */
+    --secondary-color: #8b6f47;
+    /* Warm tan-brown */
+    --accent-color: #a67c52;
+    /* Light brown/tan */
+    --text-dark: #3d2817;
+    /* Rich dark brown for readability */
+    --text-light: #5c4033;
+    /* Medium brown for secondary text */
+    --background-light: #f8f5f2;
+    /* Warm light background */
+    --border-color: #e5ddd5;
+    /* Subtle warm borders */
 }
 
 /* Align header navigation with main content container */
 .header .nav {
     max-width: calc(var(--main-width) + var(--gap) * 2);
-    flex-wrap: nowrap !important;
-    overflow: visible !important;
+    flex-wrap: nowrap;
+    overflow: visible;
 }
 
-.header .nav > * {
-    overflow: visible !important;
+.header .nav>* {
+    overflow: visible;
 }
 
 /* Adjust menu margin when in nav-right container */
-.nav-right #menu {
+.header .nav .nav-right #menu {
     margin: 0;
-    overflow: visible !important;
+    overflow: visible;
 }
 
-.nav-right {
-    overflow: visible !important;
+.header .nav .nav-right {
+    overflow: visible;
 }
 
 /* Custom header styling */
 .header .nav .logo {
     font-weight: 700;
     font-size: 1.5rem;
-    color: var(--primary-color) !important;
     letter-spacing: -0.5px;
     display: flex;
     align-items: center;
@@ -49,6 +55,10 @@
     padding-left: var(--gap);
     margin-left: 0;
     margin-right: var(--gap);
+}
+
+.header .nav .logo a {
+    color: var(--primary-color);
 }
 
 .header .nav .logo::before {
@@ -66,8 +76,8 @@
     left: calc(var(--gap) - var(--logo-icon-width) - var(--logo-icon-gap));
 }
 
-.header .nav .logo:hover {
-    color: var(--secondary-color) !important;
+.header .nav .logo a:hover {
+    color: var(--secondary-color);
 }
 
 /* Enhanced navigation */
@@ -77,8 +87,8 @@
 }
 
 /* Group menu and social icons on the right side */
-.nav-right {
-    display: flex !important;
+.header .nav .nav-right {
+    display: flex;
     align-items: center;
     gap: 1rem;
     margin: auto var(--gap);
@@ -117,19 +127,19 @@
     display: block;
 }
 
-#menu a:hover {
-    color: var(--primary-color) !important;
+.header .nav #menu a:hover {
+    color: var(--primary-color);
 }
 
-#menu a.active {
-    color: var(--primary-color) !important;
+.header .nav #menu a.active {
+    color: var(--primary-color);
     font-weight: 600;
     text-decoration: none;
     border-bottom: 2px solid currentColor;
 }
 
-#menu .active {
-    color: var(--primary-color) !important;
+.header .nav #menu .active {
+    color: var(--primary-color);
     font-weight: 600;
     text-decoration: none;
     border-bottom: 2px solid currentColor;
@@ -148,14 +158,14 @@
     color: var(--text-light);
 }
 
-.home-info h1 {
-    color: var(--primary-color) !important;
+.home-info .entry-content h1 {
+    color: var(--primary-color);
     font-weight: 700;
     margin-bottom: 1.5rem;
 }
 
-.home-info h2 {
-    color: var(--text-dark) !important;
+.home-info .entry-content h2 {
+    color: var(--text-dark);
     font-weight: 600;
     margin-top: 2rem;
 }
@@ -166,16 +176,19 @@
     transition: all 0.2s ease;
 }
 
-.post-entry .entry-footer a:hover,
+.post-entry .entry-footer a:hover {
+    color: var(--primary-color);
+}
+
 .paginav a:hover {
-    color: var(--primary-color) !important;
+    color: var(--primary-color);
 }
 
 /* Post content enhancements */
 .post-content h1,
 .post-content h2,
 .post-content h3 {
-    color: var(--primary-color) !important;
+    color: var(--primary-color);
 }
 
 .post-content a {
@@ -223,8 +236,9 @@ footer {
 }
 
 /* Hide post-footer entirely */
-.post-footer {
-    display: none !important;
+.post-entry .post-footer,
+article .post-footer {
+    display: none;
 }
 
 footer a {
@@ -248,13 +262,13 @@ footer a:hover {
     transform: translateY(-2px);
 }
 
-.post-entry .entry-header h2 {
-    color: var(--primary-color) !important;
+.post-entry .entry-header h2 a {
+    color: var(--primary-color);
     transition: color 0.2s ease;
 }
 
-.post-entry:hover .entry-header h2 {
-    color: var(--secondary-color) !important;
+.post-entry:hover .entry-header h2 a {
+    color: var(--secondary-color);
 }
 
 /* Responsive typography improvements */
