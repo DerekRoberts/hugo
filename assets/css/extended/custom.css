@@ -59,6 +59,7 @@
     --logo-icon-gap: 0.5rem;
     gap: var(--logo-icon-gap);
     position: relative;
+    white-space: nowrap;
     /* Align text with main content by adding padding */
     padding-left: var(--gap);
     margin-left: 0;
@@ -67,6 +68,7 @@
 
 .header .nav .logo a {
     color: var(--primary-color);
+    white-space: nowrap;
 }
 
 .header .nav .logo::before {
