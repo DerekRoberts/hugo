@@ -46,9 +46,9 @@
     gap: 1.5rem;
 }
 
-/* Override theme's menu spacing more aggressively */
+/* Override theme's menu spacing - use gap instead of margin */
 .header .nav #menu li+li {
-    margin-inline-start: 0 !important;
+    margin-inline-start: 0;
 }
 
 /* Custom header styling */
@@ -80,7 +80,7 @@
     width: var(--logo-icon-width);
     height: var(--logo-icon-width);
     /* Logo from original metacurious.ca site */
-    background-image: url('logo.avif');
+    background-image: url('/logo.avif');
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
