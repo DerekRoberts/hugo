@@ -462,21 +462,21 @@ body.list {
     opacity: 0.7;
 }
 
-.social-icon[title="Instagram"] {
+.social-icon--instagram {
     color: var(--home-instagram-color);
     background-color: var(--home-instagram-color);
 }
 
-.social-icon[title="Instagram"] svg {
+.social-icon--instagram svg {
     color: white;
 }
 
-.social-icon[title="Facebook"] {
+.social-icon--facebook {
     color: var(--home-facebook-color);
     background-color: var(--home-facebook-color);
 }
 
-.social-icon[title="Facebook"] svg {
+.social-icon--facebook svg {
     color: white;
 }
 
