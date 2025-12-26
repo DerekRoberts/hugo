@@ -14,7 +14,7 @@ defaults:
     shell: bash
 
 concurrency:
-  group: ${{ github.event.number }}
+  group: ${{ github.workflow }}
   cancel-in-progress: true
 
 jobs:

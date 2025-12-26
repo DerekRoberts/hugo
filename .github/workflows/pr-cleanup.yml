@@ -12,6 +12,11 @@ defaults:
   run:
     shell: bash
 
+concurrency:
+  # Cancel in progress for PR open and close
+  group: ${{ github.event.number }}
+  cancel-in-progress: true
+
 jobs:
   cleanup:
     runs-on: ubuntu-latest
