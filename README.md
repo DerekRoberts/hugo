@@ -4,7 +4,7 @@ Hugo-based website for MetaCurious.ca.
 
 ## Overview
 
-This site is built with [Hugo](https://gohugo.io/), a fast static site generator, and automatically deploys to GitHub Pages when pull requests are merged to the `main` branch.
+This site is built with [Hugo](https://gohugo.io/), a fast static site generator, using the [PaperMod](https://github.com/adityatelange/hugo-PaperMod) theme. The site automatically deploys to GitHub Pages when pull requests are merged to the `main` branch.
 
 ## Quick Start
 
@@ -16,12 +16,6 @@ The live site is available at: `https://<username>.github.io/<repository>/`
 
 ### Making Content Changes
 
-Content files are in the `content/` directory:
-- `content/_index.md` - Homepage
-- `content/coach.md` - About page
-- `content/services.md` - Services page
-- `content/contact.md` - Contact page
-
 **⚠️ Important: Always use pull requests for changes. Do not push directly to `main`.**
 
 1. Create a branch for your changes
@@ -30,19 +24,6 @@ Content files are in the `content/` directory:
 4. Review the PR preview deployment (automatically created)
 5. Merge the PR when ready
 6. The site will automatically rebuild and deploy after merging
-
-### Adding New Content
-
-```bash
-# Create a new page
-hugo new content/my-page.md
-```
-
-## Contact Form Setup
-
-The contact form requires a Formspree endpoint to be configured.
-
-📋 **Quick Setup Guide**: [SETUP_CONTACT_FORM.md](SETUP_CONTACT_FORM.md)
 
 ## Local Development
 
@@ -64,14 +45,8 @@ hugo server -D
 # Site will be available at http://localhost:1313/
 ```
 
-### Building for Production
-
-```bash
-# Build the site
-hugo --minify
-```
-
-The built site will be in the `public/` directory (this directory is git-ignored).
+#### Troubleshooting
+If changes aren't appearing in the browser, try `hugo server -D --disableFastRender` to force a full rebuild on each change (slower but more reliable).
 
 ## Site Structure
 
@@ -82,24 +57,18 @@ The built site will be in the `public/` directory (this directory is git-ignored
 - `hugo.toml` - Site configuration (title, menu, theme settings)
 - `themes/PaperMod/` - Hugo theme (via git submodule)
 
-## Theme
+## Configuration
 
-This site uses the [PaperMod](https://github.com/adityatelange/hugo-PaperMod) theme, which provides:
-- Clean, minimalist design
-- Dark/light mode toggle
-- Mobile-responsive layout
-- Fast performance
+### Contact Form Setup
 
-## Deployment
+The contact form requires a Formspree endpoint to be configured.
 
-Deployment is automatic via GitHub Actions:
-- **⚠️ Important**: All changes must go through pull requests (pushing directly to `main` is not allowed)
-- PR preview deployments are automatically created for review
-- When a PR is merged to `main`, GitHub Actions builds and deploys to GitHub Pages
-- Site updates within 1-2 minutes
+📋 **Quick Setup Guide**: [SETUP_CONTACT_FORM.md](SETUP_CONTACT_FORM.md)
 
-No manual deployment steps required.
+### Blog Link Setup
 
-## License
+The Blog menu item links to your Medium blog. To configure it:
 
-Apache License 2.0 - See LICENSE file for details
+1. Edit `hugo.toml`
+2. Find the `[[menu.main]]` section with `name = "Blog"`
+3. Update the `url` field with your Medium blog URL (e.g., `https://yourusername.medium.com/`)
