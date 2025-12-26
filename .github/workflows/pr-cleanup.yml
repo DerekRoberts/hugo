@@ -1,4 +1,4 @@
-name: PR Close
+name: Cleanup
 
 on:
   pull_request:
@@ -27,19 +27,19 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          
+
           # Fetch and checkout gh-pages branch
           # If gh-pages doesn't exist, that's ok - nothing to clean up
           if ! git fetch origin gh-pages:gh-pages 2>/dev/null; then
             echo "No gh-pages branch found, nothing to clean up"
             exit 0
           fi
-          
+
           if ! git checkout gh-pages; then
             echo "Error: Failed to checkout gh-pages branch"
             exit 1
           fi
-          
+
           # Remove the pr directory if it exists
           if [ -d "pr-${{ github.event.pull_request.number }}" ]; then
             rm -rf pr-${{ github.event.pull_request.number }}
@@ -63,4 +63,3 @@ jobs:
               repo: context.repo.repo,
               body: `⚠️ **Warning:** Failed to clean up PR preview deployment.\n\nThe preview directory \`pr-${context.payload.pull_request.number}\` may need to be manually removed from the \`gh-pages\` branch.`
             });
-

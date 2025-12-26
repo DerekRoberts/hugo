@@ -1,4 +1,4 @@
-name: PR Open
+name: Pull Request
 
 on:
   pull_request:
@@ -13,7 +13,8 @@ defaults:
     shell: bash
 
 jobs:
-  deploy-preview:
+  deploy:
+    name: Deploy
     runs-on: ubuntu-latest
     env:
       HUGO_VERSION: 0.146.0
@@ -43,17 +44,17 @@ jobs:
           # Configure git
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          
+
           # Setup git credentials
           git config --global credential.helper store
           echo "https://x-access-token:${{ github.token }}@github.com" > ~/.git-credentials
-          
+
           # Fetch gh-pages branch
           git fetch origin gh-pages:gh-pages 2>/dev/null || true
-          
+
           # Create a temporary directory for gh-pages content
           TEMP_DIR=$(mktemp -d)
-          
+
           # If gh-pages branch exists, check it out to temp directory
           if git rev-parse --verify gh-pages >/dev/null 2>&1; then
             git clone --branch gh-pages --single-branch https://github.com/${{ github.repository }}.git "$TEMP_DIR"
@@ -62,16 +63,16 @@ jobs:
             git init
             git checkout --orphan gh-pages
           fi
-          
+
           # Create pr-specific directory in temp location
           mkdir -p "$TEMP_DIR/pr-${{ github.event.pull_request.number }}"
-          
+
           # Copy built files to pr directory
           cp -r ${{ github.workspace }}/public/* "$TEMP_DIR/pr-${{ github.event.pull_request.number }}/"
-          
+
           # Add .nojekyll to prevent GitHub Pages from processing with Jekyll
           touch "$TEMP_DIR/.nojekyll"
-          
+
           # Navigate to temp directory and push
           cd "$TEMP_DIR"
           git add .
@@ -83,24 +84,24 @@ jobs:
         with:
           script: |
             const url = `https://${context.repo.owner}.github.io/${context.repo.repo}/pr-${context.payload.pull_request.number}/`;
-            
+
             // Find existing comment
             const comments = await github.rest.issues.listComments({
               owner: context.repo.owner,
               repo: context.repo.repo,
               issue_number: context.payload.pull_request.number,
             });
-            
+
             const botComment = comments.data.find(comment => 
               comment.user.type === 'Bot' && 
               comment.body.includes('Preview deployment')
             );
-            
+
             const body = `🚀 **Preview deployment ready!**\n\n` +
                         `✨ Preview URL: ${url}\n\n` +
                         `The preview will be automatically updated with each commit and cleaned up when the PR is closed or merged.\n\n` +
                         `> **Note:** It may take a few minutes for GitHub Pages to update with your changes.`;
-            
+
             if (botComment) {
               await github.rest.issues.updateComment({
                 owner: context.repo.owner,
