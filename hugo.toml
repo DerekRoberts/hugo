@@ -63,8 +63,8 @@ Empowering emerging leaders to foster equitable communities through transformati
   weight = 10
 
 [[menu.main]]
-  name = "About"
-  url = "/about/"
+  name = "The Coach"
+  url = "/about-the-coach/"
   weight = 20
 
 [[menu.main]]
@@ -73,7 +73,7 @@ Empowering emerging leaders to foster equitable communities through transformati
   weight = 30
 
 [[menu.main]]
-  name = "Services"
+  name = "Our Services"
   url = "/services/"
   weight = 40
 
