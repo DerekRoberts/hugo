@@ -25,12 +25,6 @@ The live site is available at: `https://<username>.github.io/<repository>/`
 5. Merge the PR when ready
 6. The site will automatically rebuild and deploy after merging
 
-## Contact Form Setup
-
-The contact form requires a Formspree endpoint to be configured.
-
-📋 **Quick Setup Guide**: [SETUP_CONTACT_FORM.md](SETUP_CONTACT_FORM.md)
-
 ## Local Development
 
 To preview changes locally before pushing:
@@ -62,3 +56,9 @@ If changes aren't appearing in the browser, try `hugo server -D --disableFastRen
 - `assets/` - CSS and other processed assets
 - `hugo.toml` - Site configuration (title, menu, theme settings)
 - `themes/PaperMod/` - Hugo theme (via git submodule)
+
+## Contact Form Setup
+
+The contact form requires a Formspree endpoint to be configured.
+
+📋 **Quick Setup Guide**: [SETUP_CONTACT_FORM.md](SETUP_CONTACT_FORM.md)
