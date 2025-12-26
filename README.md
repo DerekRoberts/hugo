@@ -57,8 +57,18 @@ If changes aren't appearing in the browser, try `hugo server -D --disableFastRen
 - `hugo.toml` - Site configuration (title, menu, theme settings)
 - `themes/PaperMod/` - Hugo theme (via git submodule)
 
-## Contact Form Setup
+## Configuration
+
+### Contact Form Setup
 
 The contact form requires a Formspree endpoint to be configured.
 
 📋 **Quick Setup Guide**: [SETUP_CONTACT_FORM.md](SETUP_CONTACT_FORM.md)
+
+### Blog Link Setup
+
+The Blog menu item links to your Medium blog. To configure it:
+
+1. Edit `hugo.toml`
+2. Find the `[[menu.main]]` section with `name = "Blog"`
+3. Update the `url` field with your Medium blog URL (e.g., `https://yourusername.medium.com/`)
