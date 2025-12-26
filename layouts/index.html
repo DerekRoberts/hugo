@@ -20,7 +20,8 @@
       <a href="{{ "services/" | absURL }}" class="learn-more-btn">Learn more about coaching</a>
     </div>
     <div class="welcome-illustration">
-      <img src="{{ "main.avif" | absURL }}" alt="Illustration representing personal growth and reflection through coaching" class="illustration-img">
+      {{- $imgPath := "main.avif" -}}
+      <img src="{{ $imgPath | absURL }}" alt="Illustration representing personal growth and reflection through coaching" class="illustration-img">
     </div>
   </div>
 
