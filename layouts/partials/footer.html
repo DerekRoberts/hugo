@@ -7,7 +7,7 @@
 
 {{- if (not site.Params.disableScrollToTop) }}
 <a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor" aria-hidden="true">
     <path d="M12 6H0l6-6z" />
   </svg>
 </a>
@@ -78,6 +78,9 @@
   if (themeToggle) {
     themeToggle.addEventListener("click", () => {
       const html = document.querySelector("html");
+      if (!html) {
+        return;
+      }
       if (html.dataset.theme === "dark") {
         html.dataset.theme = 'light';
         localStorage.setItem("pref-theme", 'light');
@@ -128,9 +131,9 @@
 
     if (container.classList.contains("highlight")) {
       container.appendChild(copybutton);
-    } else if (container.parentNode.firstChild == container) {
+    } else if (container.parentNode.firstChild === container) {
       // td containing LineNos
-    } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+    } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName === "TABLE") {
       // table containing LineNos and code
       codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
     } else {

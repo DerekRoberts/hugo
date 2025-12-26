@@ -5,8 +5,10 @@
         const themeToggle = document.getElementById("theme-toggle");
         if (!themeToggle) return;
 
+        const html = document.querySelector("html");
+        if (!html) return;
+
         function updateThemeToggleAccessibility() {
-            const html = document.querySelector("html");
             const defaultTheme = "{{ site.Params.defaultTheme | default "light" }}";
             const currentTheme = html.dataset.theme || (localStorage.getItem("pref-theme") || defaultTheme);
 
@@ -42,7 +44,6 @@
             });
         });
 
-        const html = document.querySelector("html");
         if (html) {
             observer.observe(html, { attributes: true, attributeFilter: [ "data-theme" ] });
         }

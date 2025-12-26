@@ -333,7 +333,7 @@ button:focus {
     max-width: 500px;
     height: 350px;
     margin: 2rem auto 0;
-    background-image: url('main.avif');
+    background-image: url('/main.avif');
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
