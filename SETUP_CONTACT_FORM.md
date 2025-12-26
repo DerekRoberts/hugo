@@ -29,8 +29,6 @@ Copy this entire URL.
 
 ### 4. Configure the Endpoint in GitHub
 
-**Option A: Using GitHub Secrets (Recommended)**
-
 1. Go to this repository on GitHub
 2. Click **Settings** (top menu)
 3. In the left sidebar, click **Secrets and variables** → **Actions**
