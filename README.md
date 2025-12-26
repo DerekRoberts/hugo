@@ -4,7 +4,7 @@ Hugo-based website for MetaCurious.ca.
 
 ## Overview
 
-This site is built with [Hugo](https://gohugo.io/), a fast static site generator, and automatically deploys to GitHub Pages when pull requests are merged to the `main` branch.
+This site is built with [Hugo](https://gohugo.io/), a fast static site generator, using the [PaperMod](https://github.com/adityatelange/hugo-PaperMod) theme. The site automatically deploys to GitHub Pages when pull requests are merged to the `main` branch.
 
 ## Quick Start
 
