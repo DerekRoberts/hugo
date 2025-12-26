@@ -1,6 +1,6 @@
 # MetaCurious Website
 
-Hugo-based website for MetaCurious, coaching emerging leaders for more equitable communities.
+Hugo-based website for MetaCurious.ca.
 
 ## Overview
 
