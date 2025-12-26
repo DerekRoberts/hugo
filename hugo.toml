@@ -16,7 +16,6 @@ theme = 'PaperMod'
   # Enhanced visual settings
   defaultTheme = "light"
   ShowFullTextinRSS = true
-  ShowPostNavLinks = true
   disableSpecial1stPost = false
   disableScrollToTop = false
   comments = false
