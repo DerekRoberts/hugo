@@ -16,7 +16,7 @@ The live site is available at: `https://derekroberts.github.io/hugo/`
 
 Content files are in the `content/` directory:
 - `content/_index.md` - Homepage
-- `content/about-the-coach.md` - About page
+- `content/coach.md` - About page
 - `content/services.md` - Services page
 - `content/contact.md` - Contact page
 
