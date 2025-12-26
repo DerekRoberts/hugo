@@ -20,8 +20,8 @@ The live site is available at: `https://<username>.github.io/<repository>/`
 
 1. Create a branch for your changes
 2. Edit the Markdown files in the `content/` directory
-2. Make your edits and commit them
-3. Open a pull request
+3. Commit your changes
+4. Open a pull request
 4. Review the PR preview deployment (automatically created)
 5. Merge the PR when ready
 6. The site will automatically rebuild and deploy after merging
