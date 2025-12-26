@@ -52,6 +52,11 @@
     margin-inline-start: 0.5rem !important;
 }
 
+/* Override theme's menu spacing more aggressively */
+.header .nav #menu li + li {
+    margin-inline-start: 0.5rem !important;
+}
+
 /* Custom header styling */
 .header .nav .logo {
     font-weight: 700;
