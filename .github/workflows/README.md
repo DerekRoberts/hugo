@@ -4,7 +4,7 @@ This directory contains GitHub Actions workflows for automating the deployment o
 
 ## Workflows
 
-### 1. hugo.yml - Production Deployment
+### 1. prod-deploy.yml - Production Deployment
 
 **Triggers:**
 - Push to `main` branch
@@ -20,7 +20,7 @@ This directory contains GitHub Actions workflows for automating the deployment o
 - Repository must have GitHub Pages enabled
 - Pages source should be set to the `gh-pages` branch
 
-### 2. pr-preview.yml - PR Preview Deployments
+### 2. pr-deploy.yml - PR Preview Deployments
 
 **Triggers:**
 - Pull request opened, synchronized (updated), or reopened

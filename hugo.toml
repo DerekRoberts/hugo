@@ -33,8 +33,7 @@ theme = 'PaperMod'
     apple_touch_icon = "/logo.svg"
 
   # Contact form configuration
-  # Set this to your Formspree endpoint URL (e.g., "https://formspree.io/f/YOUR_FORM_ID")
-  # Leave empty when using GitHub Secrets - will be overridden via HUGO_PARAMS_FORMSPREEENDPOINT environment variable
+  # Configured via GitHub Secret FORMSPREE_ENDPOINT (see SETUP_CONTACT_FORM.md)
   formspreeEndpoint = ""
 
 [params.homeInfoParams]
