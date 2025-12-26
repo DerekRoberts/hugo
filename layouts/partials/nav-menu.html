@@ -1,0 +1,60 @@
+{{- $currentPage := .currentPage }}
+{{- $hideHome := .hideHome | default false }}
+{{- $menuID := .menuID | default "" }}
+{{- $menuClass := .menuClass | default "nav-menu" }}
+{{- $itemClass := .itemClass | default "nav-item" }}
+{{- $linkClass := .linkClass | default "nav-link" }}
+{{- $useSpan := .useSpan | default false }}
+{{- $useIsMenuCurrent := .useIsMenuCurrent | default false }}
+<ul{{ if $menuID }} id="{{ $menuID }}" {{ end }}{{ if $menuClass }} class="{{ $menuClass }}" {{ end }}>
+    {{- range site.Menus.main }}
+    {{- if or (not $hideHome) (ne .Name "Home") }}
+    {{- $menu_item_url := (cond (strings.HasSuffix .URL "/") .URL (printf "%s/" .URL) ) | absLangURL }}
+    {{- $page_url := "" }}
+    {{- $is_active := false }}
+    {{- if $currentPage }}
+    {{- if $useIsMenuCurrent }}
+    {{- $is_active = $currentPage.IsMenuCurrent "main" . }}
+    {{- else }}
+    {{- $page_url = $currentPage.Permalink | absLangURL }}
+    {{- $is_active = eq $menu_item_url $page_url }}
+    {{- end }}
+    {{- end }}
+    {{- $is_search := false }}
+    {{- if .KeyName }}
+    {{- with site.GetPage .KeyName }}
+    {{- $is_search = eq .Layout "search" }}
+    {{- end }}
+    {{- end }}
+    {{- $is_external := findRE "://" .URL }}
+    <li{{ if $itemClass }} class="{{ $itemClass }}" {{ end }}>
+        <a href="{{ .URL | absLangURL }}" {{- if or $linkClass $is_active }}
+            class="{{ if $linkClass }}{{ $linkClass }}{{ end }}{{ if $is_active }} active{{ end }}" {{- end }} {{- if
+            $is_search }} title="{{ .Title | default .Name }} (Alt + /)" accesskey="/" {{- else if .Title }}
+            title="{{ .Title | default .Name }}" {{- end }} {{- if $is_external }} target="_blank"
+            rel="noopener noreferrer" {{- end }}>
+            {{- if $useSpan }}
+            <span {{- if $is_active }} class="active" {{- end }}>
+                {{- .Pre }}
+                {{- .Name -}}
+                {{- .Post -}}
+            </span>
+            {{- else }}
+            {{- .Pre }}
+            {{- .Name -}}
+            {{- .Post -}}
+            {{- end }}
+            {{- if $is_external }}&nbsp;
+            <svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round"
+                stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" height="12" width="12"
+                aria-hidden="true">
+                <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"></path>
+                <path d="M15 3h6v6"></path>
+                <path d="M10 14L21 3"></path>
+            </svg>
+            {{- end }}
+        </a>
+        </li>
+        {{- end }}
+        {{- end }}
+        </ul>

@@ -3,13 +3,20 @@
 /* Color scheme matching original metacurious.ca site */
 :root {
     /* Primary brand colors - warm earth tones */
-    --primary-color: #5c4033; /* Deep brown for trust and grounding */
-    --secondary-color: #8b6f47; /* Warm tan-brown */
-    --accent-color: #a67c52; /* Light brown/tan */
-    --text-dark: #3d2817; /* Rich dark brown for readability */
-    --text-light: #5c4033; /* Medium brown for secondary text */
-    --background-light: #f8f5f2; /* Warm light background */
-    --border-color: #e5ddd5; /* Subtle warm borders */
+    --primary-color: #5c4033;
+    /* Deep brown for trust and grounding */
+    --secondary-color: #8b6f47;
+    /* Warm tan-brown */
+    --accent-color: #a67c52;
+    /* Light brown/tan */
+    --text-dark: #3d2817;
+    /* Rich dark brown for readability */
+    --text-light: #5c4033;
+    /* Medium brown for secondary text */
+    --background-light: #f8f5f2;
+    /* Warm light background */
+    --border-color: #e5ddd5;
+    /* Subtle warm borders */
     
     /* Home page specific CSS variables */
     --home-bg-light: #f5f5f5;
@@ -24,31 +31,61 @@
     --home-border-color: #e0e0e0;
 }
 
+/* Align header navigation with main content container */
+.header .nav {
+    max-width: calc(var(--main-width) + var(--gap) * 2);
+    flex-wrap: nowrap;
+    overflow: visible;
+}
+
+.header .nav>* {
+    overflow: visible;
+}
+
+/* Adjust menu margin when in nav-right container */
+.header .nav .nav-right #menu {
+    margin: 0;
+    overflow: visible;
+}
+
 /* Custom header styling */
-.logo {
+.header .nav .logo {
     font-weight: 700;
     font-size: 1.5rem;
-    color: var(--primary-color) !important;
     letter-spacing: -0.5px;
     display: flex;
     align-items: center;
-    gap: 0.5rem;
+    --logo-icon-width: 40px;
+    --logo-icon-gap: 0.5rem;
+    gap: var(--logo-icon-gap);
+    position: relative;
+    /* Align text with main content by adding padding */
+    padding-left: var(--gap);
+    margin-left: 0;
+    margin-right: var(--gap);
 }
 
-.logo::before {
+.header .nav .logo a {
+    color: var(--primary-color);
+}
+
+.header .nav .logo::before {
     content: "";
     display: inline-block;
-    width: 40px;
-    height: 40px;
+    width: var(--logo-icon-width);
+    height: var(--logo-icon-width);
     /* Logo from original metacurious.ca site */
-    background-image: url('/hugo/logo.avif');
+    background-image: url('logo.avif');
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
+    /* Position icon to the left of the text */
+    position: absolute;
+    left: calc(var(--gap) - var(--logo-icon-width) - var(--logo-icon-gap));
 }
 
-.logo:hover {
-    color: var(--secondary-color) !important;
+.header .nav .logo a:hover {
+    color: var(--secondary-color);
 }
 
 /* Enhanced navigation */
@@ -57,13 +94,61 @@
     transition: color 0.2s ease;
 }
 
-#menu a:hover {
-    color: var(--primary-color) !important;
+/* Group menu and social icons on the right side */
+.header .nav .nav-right {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin: auto var(--gap);
+    flex-shrink: 0;
+    min-width: 0;
+    overflow: visible;
 }
 
-#menu a.active {
-    color: var(--primary-color) !important;
+/* Navigation social icons - monochrome styling */
+.nav-social-icons {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.nav-social-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--primary-color);
+    opacity: 0.7;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+    width: 20px;
+    height: 20px;
+    text-decoration: none;
+}
+
+.nav-social-icon:hover {
+    opacity: 1;
+    transform: translateY(-1px);
+}
+
+.nav-social-icon svg {
+    width: 20px;
+    height: 20px;
+    fill: currentColor;
+    display: block;
+}
+
+.header .nav #menu a:hover {
+    color: var(--primary-color);
+}
+
+.header .nav #menu a.active {
+    color: var(--primary-color);
     font-weight: 600;
+    text-decoration: none;
+    border-bottom: 2px solid currentColor;
+}
+
+.header .nav #menu a.active span.active {
+    border-bottom: none;
 }
 
 /* Home info section enhancement */
@@ -73,14 +158,14 @@
     color: var(--text-light);
 }
 
-.home-info h1 {
-    color: var(--primary-color) !important;
+.home-info .entry-content h1 {
+    color: var(--primary-color);
     font-weight: 700;
     margin-bottom: 1.5rem;
 }
 
-.home-info h2 {
-    color: var(--text-dark) !important;
+.home-info .entry-content h2 {
+    color: var(--text-dark);
     font-weight: 600;
     margin-top: 2rem;
 }
@@ -91,16 +176,19 @@
     transition: all 0.2s ease;
 }
 
-.post-entry .entry-footer a:hover,
+.post-entry .entry-footer a:hover {
+    color: var(--primary-color);
+}
+
 .paginav a:hover {
-    color: var(--primary-color) !important;
+    color: var(--primary-color);
 }
 
 /* Post content enhancements */
 .post-content h1,
 .post-content h2,
 .post-content h3 {
-    color: var(--primary-color) !important;
+    color: var(--primary-color);
 }
 
 .post-content a {
@@ -147,6 +235,12 @@ footer {
     padding-top: 2rem;
 }
 
+/* Hide post-footer entirely */
+.post-entry .post-footer,
+article .post-footer {
+    display: none;
+}
+
 footer a {
     color: var(--primary-color);
     transition: color 0.2s ease;
@@ -168,13 +262,13 @@ footer a:hover {
     transform: translateY(-2px);
 }
 
-.post-entry .entry-header h2 {
-    color: var(--primary-color) !important;
+.post-entry .entry-header h2 a {
+    color: var(--primary-color);
     transition: color 0.2s ease;
 }
 
-.post-entry:hover .entry-header h2 {
-    color: var(--secondary-color) !important;
+.post-entry:hover .entry-header h2 a {
+    color: var(--secondary-color);
 }
 
 /* Responsive typography improvements */
@@ -182,8 +276,8 @@ footer a:hover {
     .home-info .entry-content {
         font-size: 1rem;
     }
-    
-    .logo {
+
+    .header .nav .logo {
         font-size: 1.3rem;
     }
 }
@@ -223,8 +317,29 @@ body.list {
 .home-page {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 2rem 1rem;
-  background-color: var(--home-bg-light);
+  padding: 0;
+}
+
+/* Home hero section with title */
+.home-hero {
+  text-align: center;
+  margin-bottom: 2rem;
+  padding: 2rem 0;
+}
+
+.hero-title {
+  font-size: 3rem;
+  font-weight: 700;
+  margin: 0;
+  color: var(--home-text-dark);
+  line-height: 1.2;
+}
+
+.hero-tagline {
+  font-size: 1.25rem;
+  color: var(--home-text-medium);
+  margin: 0.5rem 0 0 0;
+  line-height: 1.4;
 }
 
 .home-navigation {
@@ -338,11 +453,9 @@ body.list {
 }
 
 .welcome-section {
-  background-color: var(--home-welcome-bg);
-  padding: 3rem;
-  border-radius: 8px;
+  padding: 0 0 3rem 0;
   display: flex;
-  gap: 3rem;
+  gap: 1.5rem;
   align-items: center;
   margin-bottom: 2rem;
 }
@@ -392,6 +505,8 @@ body.list {
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-left: auto;
+  margin-right: calc(-1 * var(--gap));
 }
 
 .illustration-img {
@@ -415,33 +530,28 @@ body.list {
 
 /* Home page responsive styles */
 @media (max-width: 768px) {
-  .header-section {
-    flex-direction: column;
-    align-items: flex-start;
-    text-align: left;
+  .home-hero {
+    padding: 1.5rem 0;
   }
 
-  .site-title {
+  .hero-title {
     font-size: 2rem;
   }
 
-  .site-tagline {
+  .hero-tagline {
     font-size: 1rem;
-  }
-
-  .social-icons-header {
-    margin-top: 1rem;
   }
 
   .welcome-section {
     flex-direction: column;
-    padding: 2rem;
+    padding: 0 0 2rem 0;
   }
 
   .welcome-illustration {
     flex: 0 0 auto;
     width: 100%;
     max-width: 400px;
+    margin-right: 0;
   }
 
   .welcome-title {
@@ -450,21 +560,20 @@ body.list {
 }
 
 @media (max-width: 480px) {
-  .home-page {
-    padding: 1rem;
+  .home-hero {
+    padding: 1rem 0;
   }
 
-  .site-logo {
-    width: 80px;
-    height: 80px;
-  }
-
-  .site-title {
+  .hero-title {
     font-size: 1.75rem;
   }
 
+  .hero-tagline {
+    font-size: 0.9rem;
+  }
+
   .welcome-section {
-    padding: 1.5rem;
+    padding: 0 0 1.5rem 0;
   }
 
   .welcome-title {
@@ -520,7 +629,7 @@ button:focus {
     max-width: 500px;
     height: 350px;
     margin: 2rem auto 0;
-    background-image: url('/hugo/main.avif');
+    background-image: url('/main.avif');
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;

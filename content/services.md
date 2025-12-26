@@ -4,8 +4,6 @@ date: 2025-12-23
 draft: false
 ---
 
-# Coaching Services
-
 MetaCurious offers specialized coaching services designed to empower emerging leaders and change-makers. Our coaching is tailored to your unique needs and grounded in principles of social justice, equity, and transformative leadership.
 
 ## Three Coaching Streams

@@ -4,8 +4,6 @@ date: 2025-12-23
 draft: false
 ---
 
-# About the Coach
-
 ## A Journey Rooted in Social Justice
 
 The story of MetaCurious begins with a personal journey rooted in social justice, personal development, and ethical leadership. Our coaching practice emerged from a deep commitment to supporting leaders who are working to create more equitable and just communities.
