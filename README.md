@@ -16,13 +16,13 @@ The live site is available at: `https://<username>.github.io/<repository>/`
 
 ### Making Content Changes
 
-Content files are in the `content/` directory:
+**⚠️ Important: Always use pull requests for changes. Do not push directly to `main`.**
+
+Edit the Markdown files in the `content/` directory to update the site:
 - `content/_index.md` - Homepage
 - `content/coach.md` - About page
 - `content/services.md` - Services page
 - `content/contact.md` - Contact page
-
-**⚠️ Important: Always use pull requests for changes. Do not push directly to `main`.**
 
 1. Create a branch for your changes
 2. Make your edits and commit them
