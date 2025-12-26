@@ -6,7 +6,7 @@ theme = 'PaperMod'
 [params]
   description = "Coaching emerging leaders for more equitable communities"
   author = "MetaCurious"
-  showShareButtons = true
+  showShareButtons = false
   showReadingTime = true
   showPostNavLinks = true
   showBreadCrumbs = false
