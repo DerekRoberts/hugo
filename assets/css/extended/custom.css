@@ -418,7 +418,6 @@ body.list {
     border-radius: 8px;
 }
 
-
 /* Home page responsive styles */
 @media (max-width: 768px) {
     .home-hero {
