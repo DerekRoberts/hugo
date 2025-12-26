@@ -48,6 +48,10 @@
     overflow: visible;
 }
 
+.header .nav .nav-right #menu li + li {
+    margin-inline-start: calc(var(--gap) * 0.5);
+}
+
 /* Custom header styling */
 .header .nav .logo {
     font-weight: 700;
