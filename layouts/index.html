@@ -11,184 +11,189 @@
     <div class="welcome-content">
       <h2 class="welcome-title">WELCOME</h2>
       <div class="welcome-text">
-        <p>At MetaCurious, I co-create with emerging leaders to achieve transformative outcomes through specialized coaching services. My mission is to empower leaders to navigate challenging conversations, situations, and survival mechanisms, cultivating more just and fair communities. Through personalized coaching, I provide leaders with sustainable insights for driving social equity initiatives, guiding them to lead with ethics, integrity, and a vision for inter-generational impact.</p>
+        <p>At MetaCurious, I co-create with emerging leaders to achieve transformative outcomes through specialized
+          coaching services. My mission is to empower leaders to navigate challenging conversations, situations, and
+          survival mechanisms, cultivating more just and fair communities. Through personalized coaching, I provide
+          leaders with sustainable insights for driving social equity initiatives, guiding them to lead with ethics,
+          integrity, and a vision for inter-generational impact.</p>
       </div>
-      <a href="{{ "services/" | absURL }}" class="learn-more-btn">Learn more about coaching</a>
+      <a href="{{ " services/" | absURL }}" class="learn-more-btn">Learn more about coaching</a>
     </div>
     <div class="welcome-illustration">
-      <img src="{{ "main.avif" | absURL }}" alt="Illustration representing personal growth and reflection through coaching" class="illustration-img">
+      <img src="{{ " main.avif" | absURL }}"
+        alt="Illustration representing personal growth and reflection through coaching" class="illustration-img">
     </div>
   </div>
 
 </div>
 
 <style>
-:root {
-  --bg-light: #f5f5f5;
-  --text-dark: #333;
-  --text-medium: #666;
-  --text-light: #555;
-  --button-bg: #4a4a4a;
-  --button-bg-hover: #333;
-  --border-color: #e0e0e0;
-  --white: white;
-}
+  :root {
+    --bg-light: #f5f5f5;
+    --text-dark: #333;
+    --text-medium: #666;
+    --text-light: #555;
+    --button-bg: #4a4a4a;
+    --button-bg-hover: #333;
+    --border-color: #e0e0e0;
+    --white: white;
+  }
 
-body.list {
-  background-color: var(--bg-light);
-}
+  body.list {
+    background-color: var(--bg-light);
+  }
 
-.home-main {
-  padding: var(--gap);
-}
+  .home-main {
+    padding: var(--gap);
+  }
 
-.home-page {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0;
-}
+  .home-page {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0;
+  }
 
-/* Home hero section with title */
-.home-hero {
-  text-align: center;
-  margin-bottom: 2rem;
-  padding: 2rem 0;
-}
-
-.hero-title {
-  font-size: 3rem;
-  font-weight: 700;
-  margin: 0;
-  color: var(--text-dark);
-  line-height: 1.2;
-}
-
-.hero-tagline {
-  font-size: 1.25rem;
-  color: var(--text-medium);
-  margin: 0.5rem 0 0 0;
-  line-height: 1.4;
-}
-
-
-.welcome-section {
-  padding: 0 0 3rem 0;
-  display: flex;
-  gap: 1.5rem;
-  align-items: center;
-  margin-bottom: 2rem;
-}
-
-.welcome-content {
-  flex: 1;
-  min-width: 300px;
-}
-
-.welcome-title {
-  font-size: 2.5rem;
-  font-weight: 400;
-  letter-spacing: 0.05em;
-  color: var(--text-dark);
-  margin: 0 0 1.5rem 0;
-}
-
-.welcome-text {
-  font-size: 1rem;
-  line-height: 1.8;
-  color: var(--text-light);
-  margin-bottom: 2rem;
-}
-
-.welcome-text p {
-  margin: 0;
-}
-
-.learn-more-btn {
-  display: inline-block;
-  background-color: var(--button-bg);
-  color: var(--white);
-  padding: 0.875rem 2rem;
-  text-decoration: none;
-  border-radius: 4px;
-  font-size: 1rem;
-  font-weight: 500;
-  transition: background-color 0.2s;
-}
-
-.learn-more-btn:hover {
-  background-color: var(--button-bg-hover);
-}
-
-.welcome-illustration {
-  flex: 0 0 350px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-left: auto;
-  margin-right: calc(-1 * var(--gap));
-}
-
-.illustration-img {
-  max-width: 100%;
-  height: auto;
-  border-radius: 8px;
-}
-
-
-@media (max-width: 768px) {
+  /* Home hero section with title */
   .home-hero {
-    padding: 1.5rem 0;
+    text-align: center;
+    margin-bottom: 2rem;
+    padding: 2rem 0;
   }
 
   .hero-title {
-    font-size: 2rem;
+    font-size: 3rem;
+    font-weight: 700;
+    margin: 0;
+    color: var(--text-dark);
+    line-height: 1.2;
   }
 
   .hero-tagline {
-    font-size: 1rem;
+    font-size: 1.25rem;
+    color: var(--text-medium);
+    margin: 0.5rem 0 0 0;
+    line-height: 1.4;
   }
+
 
   .welcome-section {
-    flex-direction: column;
-    padding: 0 0 2rem 0;
+    padding: 0 0 3rem 0;
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+    margin-bottom: 2rem;
   }
 
-  .welcome-illustration {
-    flex: 0 0 auto;
-    width: 100%;
-    max-width: 400px;
-    margin-right: 0;
+  .welcome-content {
+    flex: 1;
+    min-width: 300px;
   }
 
   .welcome-title {
-    font-size: 2rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .home-hero {
-    padding: 1rem 0;
-  }
-
-  .hero-title {
-    font-size: 1.75rem;
-  }
-
-  .hero-tagline {
-    font-size: 0.9rem;
-  }
-
-  .welcome-section {
-    padding: 0 0 1.5rem 0;
-  }
-
-  .welcome-title {
-    font-size: 1.75rem;
+    font-size: 2.5rem;
+    font-weight: 400;
+    letter-spacing: 0.05em;
+    color: var(--text-dark);
+    margin: 0 0 1.5rem 0;
   }
 
   .welcome-text {
-    font-size: 0.95rem;
+    font-size: 1rem;
+    line-height: 1.8;
+    color: var(--text-light);
+    margin-bottom: 2rem;
   }
-}
+
+  .welcome-text p {
+    margin: 0;
+  }
+
+  .learn-more-btn {
+    display: inline-block;
+    background-color: var(--button-bg);
+    color: var(--white);
+    padding: 0.875rem 2rem;
+    text-decoration: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    font-weight: 500;
+    transition: background-color 0.2s;
+  }
+
+  .learn-more-btn:hover {
+    background-color: var(--button-bg-hover);
+  }
+
+  .welcome-illustration {
+    flex: 0 0 350px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: auto;
+    margin-right: calc(-1 * var(--gap));
+  }
+
+  .illustration-img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+  }
+
+
+  @media (max-width: 768px) {
+    .home-hero {
+      padding: 1.5rem 0;
+    }
+
+    .hero-title {
+      font-size: 2rem;
+    }
+
+    .hero-tagline {
+      font-size: 1rem;
+    }
+
+    .welcome-section {
+      flex-direction: column;
+      padding: 0 0 2rem 0;
+    }
+
+    .welcome-illustration {
+      flex: 0 0 auto;
+      width: 100%;
+      max-width: 400px;
+      margin-right: 0;
+    }
+
+    .welcome-title {
+      font-size: 2rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .home-hero {
+      padding: 1rem 0;
+    }
+
+    .hero-title {
+      font-size: 1.75rem;
+    }
+
+    .hero-tagline {
+      font-size: 0.9rem;
+    }
+
+    .welcome-section {
+      padding: 0 0 1.5rem 0;
+    }
+
+    .welcome-title {
+      font-size: 1.75rem;
+    }
+
+    .welcome-text {
+      font-size: 0.95rem;
+    }
+  }
 </style>
 {{ end }}
