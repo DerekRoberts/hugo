@@ -27,9 +27,6 @@ Simply edit these Markdown files and push changes. The site will automatically r
 ```bash
 # Create a new page
 hugo new content/my-page.md
-
-# Create a new blog post (if blog section exists)
-hugo new content/blog/my-post.md
 ```
 
 ## Contact Form Setup
