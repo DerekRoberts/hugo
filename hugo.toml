@@ -9,7 +9,7 @@ theme = 'PaperMod'
   showShareButtons = true
   showReadingTime = true
   showPostNavLinks = true
-  showBreadCrumbs = true
+  showBreadCrumbs = false
   showCodeCopyButtons = false
   showToc = false
   
