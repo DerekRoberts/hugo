@@ -25,8 +25,6 @@
     --home-text-light: #555;
     --home-button-bg: #4a4a4a;
     --home-button-bg-hover: #333;
-    --home-instagram-color: #E1306C;
-    --home-facebook-color: #1877F2;
     --home-border-color: #e0e0e0;
 }
 
@@ -370,116 +368,6 @@ body.list {
     line-height: 1.4;
 }
 
-.home-navigation {
-    display: flex;
-    justify-content: flex-end;
-    margin-bottom: 2rem;
-    padding: 1rem 0;
-}
-
-.nav-menu {
-    display: flex;
-    list-style: none;
-    gap: 2rem;
-    margin: 0;
-    padding: 0;
-}
-
-.nav-item {
-    margin: 0;
-}
-
-.nav-link {
-    color: var(--home-text-dark);
-    text-decoration: none;
-    font-size: 1rem;
-    font-weight: 400;
-    transition: color 0.2s;
-}
-
-.nav-link:hover,
-.nav-link.active {
-    color: var(--home-text-medium);
-    text-decoration: underline;
-}
-
-.header-section {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 3rem;
-    gap: 2rem;
-    flex-wrap: wrap;
-}
-
-.logo-container {
-    flex: 0 0 auto;
-}
-
-.site-logo {
-    width: 120px;
-    height: 120px;
-    object-fit: contain;
-}
-
-.title-section {
-    flex: 1;
-    min-width: 300px;
-}
-
-.site-title {
-    font-size: 3rem;
-    font-weight: 700;
-    margin: 0;
-    color: var(--home-text-dark);
-    line-height: 1.2;
-}
-
-.site-tagline {
-    font-size: 1.25rem;
-    color: var(--home-text-medium);
-    margin: 0.5rem 0 0 0;
-    line-height: 1.4;
-}
-
-.social-icons-header {
-    display: flex;
-    gap: 1rem;
-    align-items: center;
-}
-
-.social-icon {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 40px;
-    height: 40px;
-    border-radius: 4px;
-    transition: all 0.2s;
-}
-
-.social-icon:hover {
-    opacity: 0.7;
-}
-
-.social-icon--instagram {
-    color: var(--home-instagram-color);
-    background-color: var(--home-instagram-color);
-}
-
-.social-icon--instagram svg {
-    color: white;
-}
-
-.social-icon--facebook {
-    color: var(--home-facebook-color);
-    background-color: var(--home-facebook-color);
-}
-
-.social-icon--facebook svg {
-    color: white;
-}
-
 .welcome-section {
     padding: 0 0 3rem 0;
     display: flex;
@@ -543,18 +431,6 @@ body.list {
     border-radius: 8px;
 }
 
-.home-footer {
-    text-align: center;
-    padding: 2rem 0;
-    color: var(--home-text-medium);
-    font-size: 0.9rem;
-    border-top: 1px solid var(--home-border-color);
-    margin-top: 2rem;
-}
-
-.home-footer p {
-    margin: 0;
-}
 
 /* Home page responsive styles */
 @media (max-width: 768px) {
