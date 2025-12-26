@@ -156,15 +156,6 @@
     border-bottom: none;
 }
 
-/* Reduce spacing between external link text and icon */
-/* Note: margin-left is intentionally set to 0rem for tight spacing */
-.header .nav #menu a .external-link-icon {
-    margin-left: 0rem;
-    display: inline-block;
-    vertical-align: baseline;
-    transform: translateY(0.05em);
-}
-
 /* Home info section enhancement */
 .home-info .entry-content {
     font-size: 1.1rem;
