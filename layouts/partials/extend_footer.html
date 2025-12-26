@@ -21,12 +21,16 @@
 
         // Initialize on page load
         updateThemeToggleAccessibility();
+        
+        // Note: This listener works in conjunction with the theme toggle handler in footer.html
+        // which actually changes the theme. We use setTimeout to wait for that handler to
+        // update the data-theme attribute before updating accessibility attributes.
         themeToggle.addEventListener("click", function () {
             // Wait for theme to change, then update accessibility
             setTimeout(updateThemeToggleAccessibility, 0);
         });
-
-        // Also listen to the existing theme toggle handler
+        
+        // Also listen for theme changes via MutationObserver as a fallback
         const observer = new MutationObserver(function (mutations) {
             mutations.forEach(function (mutation) {
                 if (mutation.type === "attributes" && mutation.attributeName === "data-theme") {

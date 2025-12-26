@@ -36,10 +36,6 @@
     overflow: visible;
 }
 
-.header .nav .nav-right {
-    overflow: visible;
-}
-
 /* Custom header styling */
 .header .nav .logo {
     font-weight: 700;
@@ -94,6 +90,7 @@
     margin: auto var(--gap);
     flex-shrink: 0;
     min-width: 0;
+    overflow: visible;
 }
 
 /* Navigation social icons - monochrome styling */
@@ -138,16 +135,7 @@
     border-bottom: 2px solid currentColor;
 }
 
-.header .nav #menu .active {
-    color: var(--primary-color);
-    font-weight: 600;
-    text-decoration: none;
-    border-bottom: 2px solid currentColor;
-}
-
-.header .nav #menu a.active span.active,
-.header .nav #menu span.active {
-    text-decoration: none;
+.header .nav #menu a.active span.active {
     border-bottom: none;
 }
 
