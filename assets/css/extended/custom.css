@@ -145,8 +145,8 @@
     border-bottom: 2px solid currentColor;
 }
 
-#menu a.active span.active,
-#menu span.active {
+.header .nav #menu a.active span.active,
+.header .nav #menu span.active {
     text-decoration: none;
     border-bottom: none;
 }
