@@ -1,6 +1,7 @@
-# TODO: Update with your GitHub Pages URL
-# Format: https://<username>.github.io/<repository>/
-baseURL = 'https://<username>.github.io/<repository>/'
+# Base URL: Use '/' for local development
+# For production builds, baseURL is overridden by GitHub Actions workflows
+# See .github/workflows/prod-deploy.yml and pr-deploy.yml
+baseURL = '/'
 languageCode = 'en-us'
 title = 'MetaCurious'
 theme = 'PaperMod'
