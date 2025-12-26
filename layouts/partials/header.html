@@ -83,6 +83,7 @@
         {{- $currentPage := . }}
         <ul id="menu">
             {{- range site.Menus.main }}
+            {{- if ne .Name "Home" }}
             {{- $menu_item_url := (cond (strings.HasSuffix .URL "/") .URL (printf "%s/" .URL) ) | absLangURL }}
             {{- $page_url:= $currentPage.Permalink | absLangURL }}
             {{- $is_search := eq (site.GetPage .KeyName).Layout `search` }}
@@ -106,6 +107,7 @@
                     {{- end }}
                 </a>
             </li>
+            {{- end }}
             {{- end }}
         </ul>
     </nav>
