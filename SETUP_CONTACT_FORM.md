@@ -16,6 +16,8 @@ The repository uses a Formspree endpoint configured via GitHub Secrets.
 2. Click "New Form" or the "+" button
 3. Give it a name like "MetaCurious Contact Form"
 4. **Important**: Set the email address where you want to receive messages (e.g., `info@metacurious.ca` or your preferred contact email address)
+   - This is the email address where form submissions will be sent
+   - You can change this later in Formspree settings if needed
 5. Click "Create Form"
 
 ### 3. Get Your Form Endpoint
