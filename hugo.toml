@@ -1,7 +1,7 @@
-# Base URL: Use empty string for local development
+# Base URL: Use localhost URL for local development (makes terminal link clickable)
 # For production builds, baseURL is overridden by GitHub Actions workflows
 # See .github/workflows/prod-deploy.yml and pr-deploy.yml
-baseURL = ''
+baseURL = 'http://localhost:1313/'
 languageCode = 'en-us'
 title = 'MetaCurious'
 theme = 'PaperMod'
