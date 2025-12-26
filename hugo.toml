@@ -22,7 +22,7 @@ theme = 'PaperMod'
   comments = false
   hidemeta = true
   hideSummary = false
-  showtoc = false
+  showToc = false
   tocopen = false
 
   # Custom assets for branding
