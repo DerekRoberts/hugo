@@ -6,23 +6,21 @@ theme = 'PaperMod'
 [params]
   description = "Coaching emerging leaders for more equitable communities"
   author = "MetaCurious"
-  showShareButtons = true
+  showShareButtons = false
   showReadingTime = true
   showPostNavLinks = true
-  showBreadCrumbs = true
+  showBreadCrumbs = false
   showCodeCopyButtons = false
-  showToc = true
+  showToc = false
   
   # Enhanced visual settings
   defaultTheme = "light"
   ShowFullTextinRSS = true
-  ShowPostNavLinks = true
   disableSpecial1stPost = false
   disableScrollToTop = false
   comments = false
-  hidemeta = false
+  hidemeta = true
   hideSummary = false
-  showtoc = true
   tocopen = false
 
   # Custom assets for branding
@@ -59,23 +57,18 @@ Empowering emerging leaders to foster equitable communities through transformati
   url = "https://www.facebook.com/MetaCuriousCoaching"
 
 [[menu.main]]
-  name = "Home"
-  url = "/"
-  weight = 10
+  name = "The Coach"
+  url = "/about-the-coach/"
+  weight = 20
 
 [[menu.main]]
-  name = "About"
-  url = "/about/"
-  weight = 20
+  name = "Our Services"
+  url = "/services/"
+  weight = 30
 
 [[menu.main]]
   name = "Contact"
   url = "/contact/"
-  weight = 30
-
-[[menu.main]]
-  name = "Services"
-  url = "/services/"
   weight = 40
 
 [[menu.main]]

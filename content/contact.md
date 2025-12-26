@@ -63,7 +63,6 @@ Coaching sessions are conducted:
 
 If you have questions before reaching out, you might find answers on our:
 
-- [About page]({{< relref "/about.md" >}}) - Learn about our mission and approach
 - [Services page]({{< relref "/services.md" >}}) - Explore our coaching offerings
 - [About the Coach]({{< relref "/about-the-coach.md" >}}) - Meet your coach
 

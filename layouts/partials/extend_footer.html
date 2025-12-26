@@ -1,0 +1,52 @@
+{{- /* Update theme toggle accessibility attributes dynamically */ -}}
+{{- if (not site.Params.disableThemeToggle) }}
+<script>
+    (function () {
+        const themeToggle = document.getElementById("theme-toggle");
+        if (!themeToggle) return;
+
+        const html = document.querySelector("html");
+        if (!html) return;
+
+        function updateThemeToggleAccessibility() {
+            const defaultTheme = "{{ site.Params.defaultTheme | default "light" }}";
+            const currentTheme = html.dataset.theme || (localStorage.getItem("pref-theme") || defaultTheme);
+
+            if (currentTheme === "dark") {
+                themeToggle.setAttribute("aria-label", "Switch to light theme");
+                themeToggle.setAttribute("aria-pressed", "true");
+            } else {
+                themeToggle.setAttribute("aria-label", "Switch to dark theme");
+                themeToggle.setAttribute("aria-pressed", "false");
+            }
+        }
+
+        // Initialize on page load
+        updateThemeToggleAccessibility();
+
+        // Note: This listener works in conjunction with the theme toggle handler in footer.html
+        // which actually changes the theme. We use setTimeout to wait for that handler to
+        // update the data-theme attribute before updating accessibility attributes.
+        // The MutationObserver below provides a more reliable fallback that watches for
+        // actual changes to the data-theme attribute.
+        themeToggle.addEventListener("click", function () {
+            // Wait for theme to change, then update accessibility
+            setTimeout(updateThemeToggleAccessibility, 0);
+        });
+
+        // Listen for theme changes via MutationObserver so accessibility attributes
+        // are updated whenever the data-theme attribute actually changes
+        const observer = new MutationObserver(function (mutations) {
+            mutations.forEach(function (mutation) {
+                if (mutation.type === "attributes" && mutation.attributeName === "data-theme") {
+                    updateThemeToggleAccessibility();
+                }
+            });
+        });
+
+        if (html) {
+            observer.observe(html, { attributes: true, attributeFilter: [ "data-theme" ] });
+        }
+    })();
+</script>
+{{- end }}
