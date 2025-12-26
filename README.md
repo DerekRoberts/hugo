@@ -10,7 +10,9 @@ This site is built with [Hugo](https://gohugo.io/), a fast static site generator
 
 ### Viewing the Site
 
-The live site is available at: `https://derekroberts.github.io/hugo/`
+The live site is available at: `https://<username>.github.io/<repository>/`
+
+**Note:** Replace `<username>` and `<repository>` with your GitHub username and repository name.
 
 ### Making Content Changes
 
