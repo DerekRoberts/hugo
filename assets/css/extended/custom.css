@@ -46,10 +46,6 @@
     gap: 1.5rem;
 }
 
-.header .nav .nav-right #menu li+li {
-    margin-inline-start: 0 !important;
-}
-
 /* Override theme's menu spacing more aggressively */
 .header .nav #menu li+li {
     margin-inline-start: 0 !important;
