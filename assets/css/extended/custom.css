@@ -17,6 +17,15 @@
     /* Warm light background */
     --border-color: #e5ddd5;
     /* Subtle warm borders */
+
+    /* Home page specific CSS variables */
+    --home-bg-light: #f5f5f5;
+    --home-text-dark: #333;
+    --home-text-medium: #666;
+    --home-text-light: #555;
+    --home-button-bg: #4a4a4a;
+    --home-button-bg-hover: #333;
+    --home-border-color: #e0e0e0;
 }
 
 /* Align header navigation with main content container */
@@ -34,6 +43,12 @@
 .header .nav .nav-right #menu {
     margin: 0;
     overflow: visible;
+    gap: 1.5rem;
+}
+
+/* Override theme's menu spacing - use gap instead of margin */
+.header .nav #menu li+li {
+    margin-inline-start: 0;
 }
 
 /* Custom header styling */
@@ -47,6 +62,7 @@
     --logo-icon-gap: 0.5rem;
     gap: var(--logo-icon-gap);
     position: relative;
+    white-space: nowrap;
     /* Align text with main content by adding padding */
     padding-left: var(--gap);
     margin-left: 0;
@@ -55,6 +71,7 @@
 
 .header .nav .logo a {
     color: var(--primary-color);
+    white-space: nowrap;
 }
 
 .header .nav .logo::before {
@@ -63,7 +80,7 @@
     width: var(--logo-icon-width);
     height: var(--logo-icon-width);
     /* Logo from original metacurious.ca site */
-    background-image: url('logo.avif');
+    background-image: url('/logo.avif');
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
@@ -287,6 +304,175 @@ footer a:hover {
     --text-light: #d4ccc3;
     --background-light: #2a2318;
     --border-color: #4a3f35;
+
+    /* Home page specific CSS variables - dark mode overrides */
+    --home-bg-light: #1f1a12;
+    --home-text-dark: #f5f0e8;
+    --home-text-medium: #d4ccc3;
+    --home-text-light: #b9afa2;
+    --home-button-bg: #4a3f35;
+    --home-button-bg-hover: #635344;
+    --home-border-color: #3b3128;
+}
+
+/* ============================================
+   Home Page Specific Styles
+   ============================================ */
+
+body.list {
+    background-color: var(--home-bg-light);
+}
+
+.home-main {
+    padding: var(--gap);
+}
+
+.home-page {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0;
+}
+
+/* Home hero section with title */
+.home-hero {
+    text-align: center;
+    margin-bottom: 2rem;
+    padding: 2rem 0;
+}
+
+.hero-title {
+    font-size: 3rem;
+    font-weight: 700;
+    margin: 0;
+    color: var(--home-text-dark);
+    line-height: 1.2;
+}
+
+.hero-tagline {
+    font-size: 1.25rem;
+    color: var(--home-text-medium);
+    margin: 0.5rem 0 0 0;
+    line-height: 1.4;
+}
+
+.welcome-section {
+    padding: 0 0 3rem 0;
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.welcome-content {
+    flex: 1;
+    min-width: 300px;
+}
+
+.welcome-title {
+    font-size: 2.5rem;
+    font-weight: 400;
+    letter-spacing: 0.05em;
+    color: var(--home-text-dark);
+    margin: 0 0 1.5rem 0;
+}
+
+.welcome-text {
+    font-size: 1rem;
+    line-height: 1.8;
+    color: var(--home-text-light);
+    margin-bottom: 2rem;
+}
+
+.welcome-text p {
+    margin: 0;
+}
+
+.learn-more-btn {
+    display: inline-block;
+    background-color: var(--home-button-bg);
+    color: white;
+    padding: 0.875rem 2rem;
+    text-decoration: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    font-weight: 500;
+    transition: background-color 0.2s;
+}
+
+.learn-more-btn:hover {
+    background-color: var(--home-button-bg-hover);
+}
+
+.welcome-illustration {
+    flex: 0 0 350px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: auto;
+    margin-right: calc(-1 * var(--gap));
+}
+
+.illustration-img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+/* Home page responsive styles */
+@media (max-width: 768px) {
+    .home-hero {
+        padding: 1.5rem 0;
+    }
+
+    .hero-title {
+        font-size: 2rem;
+    }
+
+    .hero-tagline {
+        font-size: 1rem;
+    }
+
+    .welcome-section {
+        flex-direction: column;
+        padding: 0 0 2rem 0;
+    }
+
+    .welcome-illustration {
+        flex: 0 0 auto;
+        width: 100%;
+        max-width: 400px;
+        margin-right: 0;
+    }
+
+    .welcome-title {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .home-hero {
+        padding: 1rem 0;
+    }
+
+    .hero-title {
+        font-size: 1.75rem;
+    }
+
+    .hero-tagline {
+        font-size: 0.9rem;
+    }
+
+    .welcome-section {
+        padding: 0 0 1.5rem 0;
+    }
+
+    .welcome-title {
+        font-size: 1.75rem;
+    }
+
+    .welcome-text {
+        font-size: 0.95rem;
+    }
 }
 
 /* Enhanced tag/taxonomy styling */

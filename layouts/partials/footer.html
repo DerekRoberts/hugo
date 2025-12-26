@@ -1,6 +1,6 @@
 {{- if not (.Param "hideFooter") }}
 <footer class="footer">
-  <span>&copy; {{ now.Year }} by MetaCurious – Please cite sources and link to original materials when sharing
+  <span>&copy; {{ now.Year }} by MetaCurious. Please cite sources and link to original materials when sharing
     content.</span>
 </footer>
 {{- end }}
@@ -32,7 +32,7 @@
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener("click", function (e) {
       e.preventDefault();
-      var id = this.getAttribute("href").substring(1);
+      const id = this.getAttribute("href").substring(1);
       const targetElement = document.querySelector(`[id='${decodeURIComponent(id)}']`);
       if (!targetElement) {
         return;
