@@ -66,14 +66,6 @@ hugo server -D
 
 #### Troubleshooting
 If changes aren't appearing in the browser, try `hugo server -D --disableFastRender` to force a full rebuild on each change (slower but more reliable).
-### Building for Production
-
-```bash
-# Build the site
-hugo --minify
-```
-
-The built site will be in the `public/` directory (this directory is git-ignored).
 
 ## Site Structure
 
