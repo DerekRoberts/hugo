@@ -25,15 +25,6 @@ The live site is available at: `https://<username>.github.io/<repository>/`
 5. Merge the PR when ready
 6. The site will automatically rebuild and deploy after merging
 
-### Adding New Content
-
-```bash
-# Create a new page
-hugo new content/my-page.md
-```
-
-**Important:** After creating a new page, you'll need to add it to the site navigation (menu) or link to it from another page for visitors to access it. See `hugo.toml` to add menu items, or add links in your content Markdown files.
-
 ## Contact Form Setup
 
 The contact form requires a Formspree endpoint to be configured.
