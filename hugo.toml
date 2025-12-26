@@ -1,4 +1,6 @@
-baseURL = 'https://derekroberts.github.io/hugo/'
+# TODO: Update with your GitHub Pages URL
+# Format: https://<username>.github.io/<repository>/
+baseURL = 'https://<username>.github.io/<repository>/'
 languageCode = 'en-us'
 title = 'MetaCurious'
 theme = 'PaperMod'
@@ -31,8 +33,7 @@ theme = 'PaperMod'
     apple_touch_icon = "/logo.svg"
 
   # Contact form configuration
-  # Set this to your Formspree endpoint URL (e.g., "https://formspree.io/f/YOUR_FORM_ID")
-  # Leave empty when using GitHub Secrets - will be overridden via HUGO_PARAMS_FORMSPREEENDPOINT environment variable
+  # Configured via GitHub Secret FORMSPREE_ENDPOINT (see SETUP_CONTACT_FORM.md)
   formspreeEndpoint = ""
 
 [params.homeInfoParams]
@@ -58,7 +59,7 @@ Empowering emerging leaders to foster equitable communities through transformati
 
 [[menu.main]]
   name = "The Coach"
-  url = "/about-the-coach/"
+  url = "/coach/"
   weight = 20
 
 [[menu.main]]
@@ -73,7 +74,8 @@ Empowering emerging leaders to foster equitable communities through transformati
 
 [[menu.main]]
   name = "Blog"
-  url = "https://derek-roberts.medium.com/"
+  # TODO: Update with your Medium blog URL
+  url = "https://<your-medium-username>.medium.com/"
   weight = 50
 
 [outputs]

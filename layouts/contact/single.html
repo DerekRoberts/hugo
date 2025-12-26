@@ -208,7 +208,7 @@ document.addEventListener('DOMContentLoaded', function() {
       const formAction = form.getAttribute('action');
       
       if (!formAction || formAction.includes('YOUR_FORM_ID')) {
-        throw new Error('Form not configured. Please set up Formspree endpoint in the form action attribute. See CONTACT_FORM_SETUP.md for instructions.');
+        throw new Error('Form not configured. Please set up Formspree endpoint in the form action attribute. See SETUP_CONTACT_FORM.md for instructions.');
       }
       
       const response = await fetch(formAction, {
