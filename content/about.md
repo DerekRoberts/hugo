@@ -4,8 +4,6 @@ date: 2025-12-23
 draft: false
 ---
 
-# About MetaCurious
-
 ## Our Mission
 
 MetaCurious exists to co-create with emerging leaders, helping them navigate challenging situations and facilitating transformative outcomes. We are dedicated to empowering leaders to foster more equitable communities through coaching rooted in ethics, integrity, and social justice.
