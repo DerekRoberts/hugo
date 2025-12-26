@@ -1,7 +1,7 @@
-# Base URL: Use '/' for local development
+# Base URL: Use empty string for local development
 # For production builds, baseURL is overridden by GitHub Actions workflows
 # See .github/workflows/prod-deploy.yml and pr-deploy.yml
-baseURL = '/'
+baseURL = ''
 languageCode = 'en-us'
 title = 'MetaCurious'
 theme = 'PaperMod'
