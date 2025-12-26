@@ -4,7 +4,7 @@ Hugo-based website for MetaCurious.ca.
 
 ## Overview
 
-This site is built with [Hugo](https://gohugo.io/), a fast static site generator, and automatically deploys to GitHub Pages when changes are pushed to the `main` branch.
+This site is built with [Hugo](https://gohugo.io/), a fast static site generator, and automatically deploys to GitHub Pages when pull requests are merged to the `main` branch.
 
 ## Quick Start
 
@@ -22,7 +22,14 @@ Content files are in the `content/` directory:
 - `content/services.md` - Services page
 - `content/contact.md` - Contact page
 
-Simply edit these Markdown files and push changes. The site will automatically rebuild and deploy.
+**⚠️ Important: Always use pull requests for changes. Do not push directly to `main`.**
+
+1. Create a branch for your changes
+2. Make your edits and commit them
+3. Open a pull request
+4. Review the PR preview deployment (automatically created)
+5. Merge the PR when ready
+6. The site will automatically rebuild and deploy after merging
 
 ### Adding New Content
 
@@ -90,8 +97,9 @@ This site uses the [PaperMod](https://github.com/adityatelange/hugo-PaperMod) th
 ## Deployment
 
 Deployment is automatic via GitHub Actions:
-- Push changes to `main` branch
-- GitHub Actions builds and deploys to GitHub Pages
+- **⚠️ Important**: All changes must go through pull requests (pushing directly to `main` is not allowed)
+- PR preview deployments are automatically created for review
+- When a PR is merged to `main`, GitHub Actions builds and deploys to GitHub Pages
 - Site updates within 1-2 minutes
 
 No manual deployment steps required.
