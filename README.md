@@ -93,7 +93,3 @@ Deployment is automatic via GitHub Actions:
 - Site updates within 1-2 minutes
 
 No manual deployment steps required.
-
-## License
-
-Apache License 2.0 - See LICENSE file for details
