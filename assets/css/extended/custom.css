@@ -3,25 +3,34 @@
 /* Color scheme matching original metacurious.ca site */
 :root {
     /* Primary brand colors - warm earth tones */
-    --primary-color: #5c4033;
-    /* Deep brown for trust and grounding */
-    --secondary-color: #8b6f47;
-    /* Warm tan-brown */
-    --accent-color: #a67c52;
-    /* Light brown/tan */
-    --text-dark: #3d2817;
-    /* Rich dark brown for readability */
-    --text-light: #5c4033;
-    /* Medium brown for secondary text */
-    --background-light: #f8f5f2;
-    /* Warm light background */
-    --border-color: #e5ddd5;
-    /* Subtle warm borders */
+    --primary-color: #5c4033; /* Deep brown for trust and grounding */
+    --secondary-color: #8b6f47; /* Warm tan-brown */
+    --accent-color: #a67c52; /* Light brown/tan */
+    --text-dark: #3d2817; /* Rich dark brown for readability */
+    --text-light: #5c4033; /* Medium brown for secondary text */
+    --background-light: #f8f5f2; /* Warm light background */
+    --border-color: #e5ddd5; /* Subtle warm borders */
 }
 
 /* Align header navigation with main content container */
 .header .nav {
     max-width: calc(var(--main-width) + var(--gap) * 2);
+    flex-wrap: nowrap !important;
+    overflow: visible !important;
+}
+
+.header .nav > * {
+    overflow: visible !important;
+}
+
+/* Adjust menu margin when in nav-right container */
+.nav-right #menu {
+    margin: 0;
+    overflow: visible !important;
+}
+
+.nav-right {
+    overflow: visible !important;
 }
 
 /* Custom header styling */
@@ -65,6 +74,97 @@
 #menu a {
     font-weight: 500;
     transition: color 0.2s ease;
+}
+
+/* Group menu and social icons on the right side */
+.nav-right {
+    display: flex !important;
+    align-items: center;
+    gap: 1rem;
+    margin: auto var(--gap);
+    flex-shrink: 0;
+    min-width: 0;
+}
+
+/* Header social icons - monochrome styling - must override any display:none */
+.header .nav .header-social-icons,
+.header-social-icons,
+.nav .header-social-icons,
+.nav-right .header-social-icons,
+div.header-social-icons,
+.header .nav div.header-social-icons,
+.nav-right div.header-social-icons {
+    display: flex !important;
+    align-items: center;
+    gap: 0.75rem;
+    visibility: visible !important;
+    opacity: 1 !important;
+    position: relative !important;
+    z-index: 1 !important;
+    border: 2px solid red; /* Debug - remove later */
+    padding: 4px; /* Debug - remove later */
+}
+
+/* Force visibility at all screen sizes */
+@media (max-width: 768px) {
+    .header .nav .header-social-icons,
+    .header-social-icons,
+    .nav .header-social-icons,
+    .nav-right .header-social-icons {
+        display: flex !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .header .nav .header-social-icons,
+    .header-social-icons,
+    .nav .header-social-icons,
+    .nav-right .header-social-icons {
+        display: flex !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+    }
+}
+
+.header .nav .header-social-icon {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    color: var(--primary-color) !important;
+    opacity: 1 !important;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+    visibility: visible !important;
+    width: 24px !important;
+    height: 24px !important;
+    min-width: 24px !important;
+    min-height: 24px !important;
+    position: relative !important;
+    text-decoration: none !important;
+    border: 1px solid blue; /* Debug - remove later */
+}
+
+.header .nav .header-social-icon:hover {
+    opacity: 0.8 !important;
+    transform: translateY(-1px);
+}
+
+.header .nav .header-social-icon svg {
+    width: 24px !important;
+    height: 24px !important;
+    max-width: 24px !important;
+    max-height: 24px !important;
+    min-width: 24px !important;
+    min-height: 24px !important;
+    fill: var(--primary-color) !important;
+    stroke: var(--primary-color) !important;
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    color: var(--primary-color) !important;
+    flex-shrink: 0 !important;
+    position: relative !important;
 }
 
 #menu a:hover {

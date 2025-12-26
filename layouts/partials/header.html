@@ -15,14 +15,14 @@
                     {{- if and (in $processableFormats $img.MediaType.SubType) (eq $prod true)}}
                         {{- if site.Params.label.iconHeight }}
                             {{- $img = $img.Resize (printf "x%d" site.Params.label.iconHeight) }}
-                        {{ else }}
+                        {{- else }}
                             {{- $img = $img.Resize "x30" }}
                         {{- end }}
                     {{- end }}
-                    <img src="{{ $img.Permalink }}" alt="" aria-label="logo"
+                    <img src="{{ $img.Permalink }}" alt="{{ $label_text }}" aria-label="logo"
                         height="{{- site.Params.label.iconHeight | default "30" -}}">
                 {{- else }}
-                <img src="{{- site.Params.label.icon | absURL -}}" alt="" aria-label="logo"
+                <img src="{{- site.Params.label.icon | absURL -}}" alt="{{ $label_text }}" aria-label="logo"
                     height="{{- site.Params.label.iconHeight | default "30" -}}">
                 {{- end -}}
                 {{- else if hasPrefix site.Params.label.iconSVG "<svg" }}
@@ -33,7 +33,7 @@
             {{- end }}
             <div class="logo-switches">
                 {{- if (not site.Params.disableThemeToggle) }}
-                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Switch to dark theme" aria-pressed="false">
                     <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                         stroke-linejoin="round">
@@ -60,7 +60,7 @@
                     {{- $separator := or $label_text (not site.Params.disableThemeToggle)}}
                     {{- with site.Home.Translations }}
                     <ul class="lang-switch">
-                        {{- if $separator }}<li>|</li>{{ end }}
+                        {{- if $separator }}<li>|</li>{{- end }}
                         {{- range . -}}
                         {{- if ne $lang .Lang }}
                         <li>
@@ -74,14 +74,40 @@
                             </a>
                         </li>
                         {{- end -}}
-                        {{- end}}
+                        {{- end }}
                     </ul>
                     {{- end }}
                 {{- end }}
             </div>
         </div>
         {{- $currentPage := . }}
-        {{ partial "nav-menu.html" (dict "currentPage" $currentPage "hideHome" true "menuID" "menu" "menuClass" "" "itemClass" "" "linkClass" "" "useSpan" true) }}
+        <div class="nav-right">
+            {{ partial "nav-menu.html" (dict "currentPage" $currentPage "hideHome" true "menuID" "menu" "menuClass" "" "itemClass" "" "linkClass" "" "useSpan" true) }}
+            {{- with site.Params.socialIcons }}
+            <div class="header-social-icons" style="display: flex !important; visibility: visible !important; opacity: 1 !important; position: relative !important;">
+                {{- range . }}
+                <a href="{{ .url }}" target="_blank" rel="noopener noreferrer" title="{{ .title }}" aria-label="Visit our {{ .title }} page" class="header-social-icon" style="display: inline-flex !important; visibility: visible !important; opacity: 1 !important;">
+                    {{- if eq .name "instagram" }}
+                    {{ partial "icon-instagram.html" . }}
+                    {{- else if eq .name "facebook" }}
+                    {{ partial "icon-facebook.html" . }}
+                    {{- end }}
+                </a>
+                {{- end }}
+            </div>
+            {{- end }}
+            <script>
+                // Force social icons to remain visible
+                (function() {
+                    const socialIcons = document.querySelectorAll('.header-social-icons');
+                    socialIcons.forEach(function(el) {
+                        el.style.setProperty('display', 'flex', 'important');
+                        el.style.setProperty('visibility', 'visible', 'important');
+                        el.style.setProperty('opacity', '1', 'important');
+                    });
+                })();
+            </script>
+        </div>
     </nav>
 </header>
 

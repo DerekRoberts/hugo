@@ -1,0 +1,47 @@
+{{- /* Update theme toggle accessibility attributes dynamically */ -}}
+{{- if (not site.Params.disableThemeToggle) }}
+<script>
+    (function() {
+        const themeToggle = document.getElementById("theme-toggle");
+        if (!themeToggle) return;
+        
+        function updateThemeToggleAccessibility() {
+            const html = document.querySelector("html");
+            const currentTheme = html.dataset.theme || (localStorage.getItem("pref-theme") || "{{ site.Params.defaultTheme | default "light" }}");
+            
+            if (currentTheme === "dark") {
+                themeToggle.setAttribute("aria-label", "Switch to light theme");
+                themeToggle.setAttribute("aria-pressed", "true");
+            } else {
+                themeToggle.setAttribute("aria-label", "Switch to dark theme");
+                themeToggle.setAttribute("aria-pressed", "false");
+            }
+        }
+        
+        // Initialize on page load
+        updateThemeToggleAccessibility();
+        
+        // Update when theme changes
+        const originalClickHandler = themeToggle.onclick;
+        themeToggle.addEventListener("click", function() {
+            // Wait for theme to change, then update accessibility
+            setTimeout(updateThemeToggleAccessibility, 0);
+        });
+        
+        // Also listen to the existing theme toggle handler
+        const observer = new MutationObserver(function(mutations) {
+            mutations.forEach(function(mutation) {
+                if (mutation.type === "attributes" && mutation.attributeName === "data-theme") {
+                    updateThemeToggleAccessibility();
+                }
+            });
+        });
+        
+        const html = document.querySelector("html");
+        if (html) {
+            observer.observe(html, { attributes: true, attributeFilter: ["data-theme"] });
+        }
+    })();
+</script>
+{{- end }}
+
