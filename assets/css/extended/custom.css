@@ -167,7 +167,8 @@
 .header .nav #menu a .external-link-icon {
     margin-left: 0.25rem;
     display: inline-block;
-    vertical-align: middle;
+    vertical-align: text-top;
+    transform: translateY(-0.1em);
 }
 
 /* Home info section enhancement */
