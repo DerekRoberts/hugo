@@ -57,8 +57,10 @@ hugo server -D
 # Site will be available at http://localhost:1313/
 ```
 
-**Troubleshooting:** If changes aren't appearing in the browser, try `hugo server -D --disableFastRender` to force a full rebuild on each change (slower but more reliable).
+**Troubleshooting:** If changes aren't appearing in the browser, force a full rebuild by running the server with the `--disableFastRender` flag:
 
+```bash
+hugo server -D --disableFastRender
 ### Building for Production
 
 ```bash
