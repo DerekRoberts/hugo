@@ -73,14 +73,6 @@ If changes aren't appearing in the browser, try `hugo server -D --disableFastRen
 - `hugo.toml` - Site configuration (title, menu, theme settings)
 - `themes/PaperMod/` - Hugo theme (via git submodule)
 
-## Theme
-
-This site uses the [PaperMod](https://github.com/adityatelange/hugo-PaperMod) theme, which provides:
-- Clean, minimalist design
-- Dark/light mode toggle
-- Mobile-responsive layout
-- Fast performance
-
 ## Deployment
 
 Deployment is automatic via GitHub Actions:
