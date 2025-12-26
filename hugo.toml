@@ -68,13 +68,13 @@ Empowering emerging leaders to foster equitable communities through transformati
   weight = 20
 
 [[menu.main]]
-  name = "Contact"
-  url = "/contact/"
+  name = "Our Services"
+  url = "/services/"
   weight = 30
 
 [[menu.main]]
-  name = "Our Services"
-  url = "/services/"
+  name = "Contact"
+  url = "/contact/"
   weight = 40
 
 [[menu.main]]
