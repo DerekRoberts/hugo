@@ -165,7 +165,7 @@
 
 /* Reduce spacing between external link text and icon */
 .header .nav #menu a .external-link-icon {
-    margin-left: 0.125rem;
+    margin-left: 0.01rem;
     display: inline-block;
     vertical-align: baseline;
     transform: translateY(0.05em);
