@@ -98,7 +98,7 @@ Deployment is automatic via GitHub Actions:
 - When a PR is merged to `main`, GitHub Actions builds and deploys to GitHub Pages
 - Site updates within 1-2 minutes
 
-No manual deployment steps required. All changes should go through pull requests.
+No manual deployment steps required.
 
 ## License
 
