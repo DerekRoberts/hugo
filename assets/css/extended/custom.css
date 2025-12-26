@@ -3,13 +3,25 @@
 /* Color scheme matching original metacurious.ca site */
 :root {
     /* Primary brand colors - warm earth tones */
-    --primary-color: #5c4033; /* Deep brown for trust and grounding */
-    --secondary-color: #8b6f47; /* Warm tan-brown */
-    --accent-color: #a67c52; /* Light brown/tan */
-    --text-dark: #3d2817; /* Rich dark brown for readability */
-    --text-light: #5c4033; /* Medium brown for secondary text */
-    --background-light: #f8f5f2; /* Warm light background */
-    --border-color: #e5ddd5; /* Subtle warm borders */
+    --primary-color: #5c4033;
+    /* Deep brown for trust and grounding */
+    --secondary-color: #8b6f47;
+    /* Warm tan-brown */
+    --accent-color: #a67c52;
+    /* Light brown/tan */
+    --text-dark: #3d2817;
+    /* Rich dark brown for readability */
+    --text-light: #5c4033;
+    /* Medium brown for secondary text */
+    --background-light: #f8f5f2;
+    /* Warm light background */
+    --border-color: #e5ddd5;
+    /* Subtle warm borders */
+}
+
+/* Align header navigation with main content container */
+.header .nav {
+    max-width: calc(var(--main-width) + var(--gap) * 2);
 }
 
 /* Custom header styling */
@@ -21,6 +33,11 @@
     display: flex;
     align-items: center;
     gap: 0.5rem;
+    position: relative;
+    /* Align text with main content by adding padding */
+    padding-left: var(--gap);
+    margin-left: 0 !important;
+    margin-right: var(--gap) !important;
 }
 
 .logo::before {
@@ -33,6 +50,9 @@
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
+    /* Position icon to the left of the text */
+    position: absolute;
+    left: calc(var(--gap) - 40px - 0.5rem);
 }
 
 .logo:hover {
@@ -170,7 +190,7 @@ footer a:hover {
     .home-info .entry-content {
         font-size: 1rem;
     }
-    
+
     .logo {
         font-size: 1.3rem;
     }
