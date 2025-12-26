@@ -27,7 +27,6 @@
     --home-button-bg-hover: #333;
     --home-instagram-color: #E1306C;
     --home-facebook-color: #1877F2;
-    --home-welcome-bg: #f5f3ff;
     --home-border-color: #e0e0e0;
 }
 
@@ -164,6 +163,7 @@
 }
 
 /* Reduce spacing between external link text and icon */
+/* Note: margin-left is intentionally minimal (0.01rem) for tight spacing */
 .header .nav #menu a .external-link-icon {
     margin-left: 0.01rem;
     display: inline-block;
@@ -319,6 +319,15 @@ footer a:hover {
     --text-light: #d4ccc3;
     --background-light: #2a2318;
     --border-color: #4a3f35;
+
+    /* Home page specific CSS variables - dark mode overrides */
+    --home-bg-light: #1f1a12;
+    --home-text-dark: #f5f0e8;
+    --home-text-medium: #d4ccc3;
+    --home-text-light: #b9afa2;
+    --home-button-bg: #4a3f35;
+    --home-button-bg-hover: #635344;
+    --home-border-color: #3b3128;
 }
 
 /* ============================================
