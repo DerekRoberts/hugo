@@ -18,13 +18,8 @@ The live site is available at: `https://<username>.github.io/<repository>/`
 
 **⚠️ Important: Always use pull requests for changes. Do not push directly to `main`.**
 
-Edit the Markdown files in the `content/` directory to update the site:
-- `content/_index.md` - Homepage
-- `content/coach.md` - About page
-- `content/services.md` - Services page
-- `content/contact.md` - Contact page
-
 1. Create a branch for your changes
+2. Edit the Markdown files in the `content/` directory
 2. Make your edits and commit them
 3. Open a pull request
 4. Review the PR preview deployment (automatically created)
