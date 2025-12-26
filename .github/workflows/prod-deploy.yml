@@ -13,6 +13,10 @@ defaults:
   run:
     shell: bash
 
+concurrency:
+  group: ${{ github.event.number }}
+  cancel-in-progress: true
+
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
