@@ -27,12 +27,13 @@
     {{- end }}
     {{- end }}
     {{- $is_external := findRE "://" .URL }}
-    <li{{ if $itemClass }} class="{{ $itemClass }}" {{ end }}>
-        <a href="{{ .URL | absLangURL }}" {{- if or $linkClass $is_active
-            }}class="{{ if $linkClass }}{{ $linkClass }}{{ end }}{{ if $is_active }} active{{ end }}" {{- end }} {{- if
-            $is_search }} title="{{ .Title | default .Name }} (Alt + /)" accesskey="/" {{- else if .Title }}
-            title="{{ .Title | default .Name }}" {{- end }} {{- if $is_external }} target="_blank"
-            rel="noopener noreferrer" {{- end }}>
+    <li{{ if $itemClass }} class="{{ $itemClass }}"{{ end }}>
+        <a
+            href="{{ .URL | absLangURL }}"
+            {{- if or $linkClass $is_active }}class="{{ if $linkClass }}{{ $linkClass }}{{ end }}{{ if $is_active }} active{{ end }}"{{- end }}
+            {{- if $is_search }} title="{{ .Title | default .Name }} (Alt + /)" accesskey="/"{{- else if .Title }} title="{{ .Title | default .Name }}"{{- end }}
+            {{- if $is_external }} target="_blank" rel="noopener noreferrer"{{- end }}
+        >
             {{- if $useSpan }}
             <span {{- if $is_active }} class="active" {{- end }}>
                 {{- .Pre }}
@@ -54,8 +55,7 @@
             </svg>
             {{- end }}
         </a>
-    </li>
-    {{- end }}
-    {{- end }}
-</ul>
-
+        </li>
+        {{- end }}
+        {{- end }}
+        </ul>

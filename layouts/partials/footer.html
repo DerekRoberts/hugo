@@ -55,7 +55,7 @@
 
 {{- if (not site.Params.disableScrollToTop) }}
 <script>
-  var mybutton = document.getElementById("top-link");
+  const mybutton = document.getElementById("top-link");
   if (mybutton) {
     window.onscroll = function () {
       if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
