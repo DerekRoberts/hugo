@@ -84,9 +84,9 @@
         <div class="nav-right">
             {{ partial "nav-menu.html" (dict "currentPage" $currentPage "hideHome" true "menuID" "menu" "menuClass" "" "itemClass" "" "linkClass" "" "useSpan" true) }}
             {{- with site.Params.socialIcons }}
-            <div class="header-social-icons" style="display: flex !important; visibility: visible !important; opacity: 1 !important; position: relative !important;">
+            <div class="nav-social-icons">
                 {{- range . }}
-                <a href="{{ .url }}" target="_blank" rel="noopener noreferrer" title="{{ .title }}" aria-label="Visit our {{ .title }} page" class="header-social-icon" style="display: inline-flex !important; visibility: visible !important; opacity: 1 !important;">
+                <a href="{{ .url }}" target="_blank" rel="noopener noreferrer" title="{{ .title }}" aria-label="Visit our {{ .title }} page" class="nav-social-icon">
                     {{- if eq .name "instagram" }}
                     {{ partial "icon-instagram.html" . }}
                     {{- else if eq .name "facebook" }}
@@ -96,17 +96,6 @@
                 {{- end }}
             </div>
             {{- end }}
-            <script>
-                // Force social icons to remain visible
-                (function() {
-                    const socialIcons = document.querySelectorAll('.header-social-icons');
-                    socialIcons.forEach(function(el) {
-                        el.style.setProperty('display', 'flex', 'important');
-                        el.style.setProperty('visibility', 'visible', 'important');
-                        el.style.setProperty('opacity', '1', 'important');
-                    });
-                })();
-            </script>
         </div>
     </nav>
 </header>
