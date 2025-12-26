@@ -21,9 +21,7 @@
 {{- else }}
 <body id="top">
 {{- end }}
-    {{- if not .IsHome }}
     {{ partialCached "header.html" . .Page -}}
-    {{- end }}
     <main class="main{{- if .IsHome }} home-main{{- end }}">
         {{- block "main" . }}{{ end }}
     </main>

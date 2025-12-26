@@ -1,18 +1,13 @@
 {{ define "main" }}
 <div class="home-page">
-  <!-- Navigation Menu -->
-  <nav class="home-navigation">
-    {{ partial "nav-menu.html" (dict "currentPage" . "hideHome" false "menuClass" "nav-menu" "itemClass" "nav-item" "linkClass" "nav-link" "useIsMenuCurrent" true) }}
-  </nav>
-
-  <!-- Logo and Title Section -->
-  <div class="header-section">
-    <div class="logo-container">
-      <img src="{{ "logo.avif" | absURL }}" alt="MetaCurious Logo" class="site-logo">
+  <!-- Hero Section with Logo and Title -->
+  <div class="home-hero">
+    <div class="hero-logo-container">
+      <img src="{{ "logo.avif" | absURL }}" alt="MetaCurious Logo" class="hero-logo">
     </div>
-    <div class="title-section">
-      <h1 class="site-title">MetaCurious</h1>
-      <p class="site-tagline">Coaching emerging leaders for more equitable communities</p>
+    <div class="hero-title-section">
+      <h1 class="hero-title">MetaCurious</h1>
+      <p class="hero-tagline">Coaching emerging leaders for more equitable communities</p>
     </div>
   </div>
 
@@ -54,75 +49,43 @@ body.list {
 }
 
 .home-main {
-  padding: 0;
-  max-width: 100%;
+  padding: var(--gap);
 }
 
 .home-page {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 2rem 1rem;
-  background-color: var(--bg-light);
-}
-
-.home-navigation {
-  display: flex;
-  justify-content: flex-end;
-  margin-bottom: 2rem;
-  padding: 1rem 0;
-}
-
-.nav-menu {
-  display: flex;
-  list-style: none;
-  gap: 2rem;
-  margin: 0;
   padding: 0;
 }
 
-.nav-item {
-  margin: 0;
-}
-
-.nav-link {
-  color: var(--text-dark);
-  text-decoration: none;
-  font-size: 1rem;
-  font-weight: 400;
-  transition: color 0.2s;
-}
-
-.nav-link:hover,
-.nav-link.active {
-  color: var(--text-medium);
-  text-decoration: underline;
-}
-
-.header-section {
+/* Home hero section with large logo and title */
+.home-hero {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  margin-bottom: 3rem;
+  justify-content: center;
   gap: 2rem;
+  margin-bottom: 3rem;
+  padding: 2rem 0;
   flex-wrap: wrap;
 }
 
-.logo-container {
+.hero-logo-container {
   flex: 0 0 auto;
 }
 
-.site-logo {
+.hero-logo {
   width: 120px;
   height: 120px;
   object-fit: contain;
 }
 
-.title-section {
+.hero-title-section {
   flex: 1;
   min-width: 300px;
+  text-align: center;
 }
 
-.site-title {
+.hero-title {
   font-size: 3rem;
   font-weight: 700;
   margin: 0;
@@ -130,7 +93,7 @@ body.list {
   line-height: 1.2;
 }
 
-.site-tagline {
+.hero-tagline {
   font-size: 1.25rem;
   color: var(--text-medium);
   margin: 0.5rem 0 0 0;
@@ -215,17 +178,18 @@ body.list {
 }
 
 @media (max-width: 768px) {
-  .header-section {
+  .home-hero {
     flex-direction: column;
-    align-items: flex-start;
-    text-align: left;
+    align-items: center;
+    text-align: center;
+    padding: 1.5rem 0;
   }
 
-  .site-title {
+  .hero-title {
     font-size: 2rem;
   }
 
-  .site-tagline {
+  .hero-tagline {
     font-size: 1rem;
   }
 
@@ -246,17 +210,21 @@ body.list {
 }
 
 @media (max-width: 480px) {
-  .home-page {
-    padding: 1rem;
+  .home-hero {
+    padding: 1rem 0;
   }
 
-  .site-logo {
+  .hero-logo {
     width: 80px;
     height: 80px;
   }
 
-  .site-title {
+  .hero-title {
     font-size: 1.75rem;
+  }
+
+  .hero-tagline {
+    font-size: 0.9rem;
   }
 
   .welcome-section {
